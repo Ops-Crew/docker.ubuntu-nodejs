@@ -39,7 +39,7 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
 
 # git-cli and tools
 RUN apt-get install -y \
-    git-cli \
+    git \
     wget \
     npm \
     bower \
