@@ -5,6 +5,8 @@
 # You can specify a custom docker image from Docker Hub as your build environment.
 # image: docker-image:tag
 
+image: tbaltrushaitis/ubuntu-nodejs
+
 pipelines:
   default:
     - step:
@@ -15,5 +17,6 @@ pipelines:
           - getent passwd
           - whoami
           - id
-          - finger
           - df -H
+          - date
+          - ping 8.8.8.8 -n 4
