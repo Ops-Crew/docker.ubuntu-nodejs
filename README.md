@@ -1,3 +1,5 @@
+![Ubuntu Logo](https://bitbucket.org/tbaltrushaitis/ubuntu-nodejs/avatar/128)
+
 # Docker :: ubuntu-nodejs #
 
 This README would normally document whatever steps are necessary to get your application up and running.
