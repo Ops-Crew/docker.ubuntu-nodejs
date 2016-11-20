@@ -11,15 +11,16 @@ pipelines:
   default:
     - step:
         script:
-          - printf "Hi from OS! I am:\n$(uname -a)"
-          - node -v
-          - npm -v
-          - getent passwd
+          - printf "\n\n\nHi! I am OS:\n$(uname -a)\n\n\n"
+          - free -m
+          - lscpu
           - whoami
           - id
+          - getent passwd
           - df -H
           - date
           - ping 8.8.8.8 -c 4
-          - free -m
-          - lscpu
+          - node -v
+          - npm -v
+          - #git clone 
           
