@@ -1,12 +1,12 @@
-//  ===================================================================================== //
-//  #  Docker Image for node.js applications
-//  ===================================================================================== //
-//  #  Source Image Name:Tag
+##  ===================================================================================== ##
+##  #  Docker Image for node.js applications
+##  ===================================================================================== ##
+##  #  Source Image Name:Tag
 FROM buildpack-deps:jessie
 
-//  ===================================================================================== //
-//  #  Docker Image for node.js applications
-//  ===================================================================================== //
+##  ===================================================================================== ##
+##  #  Docker Image for node.js applications
+##  ===================================================================================== ##
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.9.1
@@ -28,6 +28,7 @@ RUN set -ex     \
         gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
     done
 
+# nodejs install
 RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                    \
   && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                           \
@@ -35,5 +36,14 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
   && tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-components=1       \
   && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt              \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+
+# git-cli and tools
+RUN apt-get install -y \
+    git-cli \
+    wget \
+    npm \
+    bower \
+    grunt-cli \
+    curl
 
 CMD ["node"]
