@@ -19,4 +19,7 @@ pipelines:
           - id
           - df -H
           - date
-          - ping 8.8.8.8 -n 4
+          - ping 8.8.8.8 -c 4
+          - free -m
+          - lscpu
+          
