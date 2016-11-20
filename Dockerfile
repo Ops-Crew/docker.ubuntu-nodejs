@@ -1,4 +1,15 @@
+//  ===================================================================================== //
+//  #  Docker Image for node.js applications
+//  ===================================================================================== //
+//  #  Source Image Name:Tag
 FROM buildpack-deps:jessie
+
+//  ===================================================================================== //
+//  #  Docker Image for node.js applications
+//  ===================================================================================== //
+
+ENV NPM_CONFIG_LOGLEVEL info
+ENV NODE_VERSION 6.9.1
 
 RUN groupadd -r node && useradd -r -g node node
 
@@ -16,9 +27,6 @@ RUN set -ex     \
   ; do  \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
-
-ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.9.1
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc"                  \
