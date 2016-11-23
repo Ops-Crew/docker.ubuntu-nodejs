@@ -41,9 +41,6 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
 RUN apt-get install -y \
     git \
     wget \
-    npm \
-    bower \
-    grunt-cli \
     curl
 
 CMD ["node"]
