@@ -12,11 +12,11 @@
 
 ### Packages Versions ###
 
-Image | Version  | Tag
-------|----------|----
-Docker|  0.0.1   | dev
-Linux | 4.4.0-45 | generic
- node |  v6.9.1  | x64
+Package | Version  | Tag
+--------|----------|----
+Docker  |  0.0.1   | dev
+Linux   | 4.4.0-45 | generic
+ Node.js |  v6.9.1 | x64
 
 ### How do set up and use ###
 
