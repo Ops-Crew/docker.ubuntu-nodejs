@@ -40,8 +40,7 @@ RUN  curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-l
 RUN apt-get -y install  \
     git                 \
     wget                \
-    curl                \
-    htop
+    curl
 
 RUN ["node", "-v"]
 
