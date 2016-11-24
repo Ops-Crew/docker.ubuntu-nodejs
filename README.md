@@ -8,11 +8,17 @@
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Provide a Docker Container with Ubuntu OS and Node.js environment preinstalled.
 
-### How do I get set up? ###
+### Packages Versions ###
+
+Image | Version  | Tag
+------|----------|----
+Docker|  0.0.1   | dev
+Linux | 4.4.0-45 | generic
+ node |  v6.9.1  | x64
+
+### How do set up and use ###
 
 * Summary of set up
 * Configuration
@@ -21,13 +27,6 @@
 * How to run tests
 * Deployment instructions
 
-### Contribution guidelines ###
+### More Info ###
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* [Markdown Tutorial](https://bitbucket.org/tutorials/markdowndemo)
