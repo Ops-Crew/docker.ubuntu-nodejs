@@ -1,4 +1,4 @@
-# Docker Image #
+# Docker Image [![](https://images.microbadger.com/badges/version/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs) [![](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs)
 
 ![Ubuntu Logo](https://bitbucket.org/tbaltrushaitis/ubuntu-nodejs/avatar/128)
 
