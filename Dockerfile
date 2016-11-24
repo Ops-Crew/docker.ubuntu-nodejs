@@ -41,7 +41,7 @@ RUN apt-get -y install  \
     git                 \
     wget                \
     curl                \
-    pwgen
+    htop
 
 RUN ["node", "-v"]
 
