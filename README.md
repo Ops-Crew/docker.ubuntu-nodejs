@@ -14,7 +14,7 @@
 
 Package | Version  | Tag
 --------|----------|----
-Docker  |  0.0.1   | dev
+Container |  0.0.1   | dev
 Linux   | 4.4.0-45 | generic
  Node.js |  v6.9.1 | x64
 
