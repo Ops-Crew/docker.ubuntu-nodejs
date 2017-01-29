@@ -61,10 +61,13 @@ RUN apt-get -q update                           \
  && apt-get clean                               \
  && rm -rf /var/lib/apt/lists/*                 \
  && printf "\n\n\n  DEPLOYED: Node.js:${NODE_VERSION} \n\n\n";
+ && printf "\n\n\n  DEPLOYED: Node.js:$(node -v) \n\n\n";
 # /**/
 
 USER node
-
 RUN ["node", "-v"]
 
-CMD ["node"]
+## Set /usr/bin/node as the Dockerized entry-point Application
+ENTRYPOINT ["node"];
+
+CMD ["--print"];
