@@ -60,7 +60,7 @@ RUN apt-get -q update                           \
             wget                                \
  && apt-get clean                               \
  && rm -rf /var/lib/apt/lists/*                 \
- && printf "\n\n\n  DEPLOYED: Node.js:${NODE_VERSION} \n\n\n";
+ && printf "\n\n\n  DEPLOYED: Node.js:${NODE_VERSION} \n\n\n";  \
  && printf "\n\n\n  DEPLOYED: Node.js:$(node -v) \n\n\n";
 # /**/
 
