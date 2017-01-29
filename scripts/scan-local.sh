@@ -31,7 +31,6 @@ echo '# `'"$image"'`'
 
 docker inspect -f '
 ## Docker Metadata
-
 - Image ID: `{{ .Id }}`
 - Created: `{{ .Created }}`
 - Arch: `{{ .Os }}`/`{{ .Architecture }}`
