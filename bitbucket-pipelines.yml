@@ -1,4 +1,4 @@
-# Only use spaces to indent your .yml configuration.
+# Only use spaces to indent .yml configuration.
 # -----
 image: tbaltrushaitis/ubuntu-nodejs
 
