@@ -16,6 +16,14 @@ VERSION=6.9.1
 TAG="v${VERSION}"
 docker build -f Dockerfile --no-cache --force-rm -t tbaltrushaitis/ubuntu-nodejs:6.9.1 .
 docker build -f Dockerfile --no-cache --force-rm -t ${REPO}:${TAG} .
+docker build -f Dockerfile --force-rm -t ${REPO}:${TAG} .
+```
+
+#### Remove Unused Images ####
+
+```
+IMAGES_LIST=$(docker images -a | grep "<none>" | awk '{print $3}')
+docker rmi -f ${IMAGES_LIST}
 ```
 
 --------
