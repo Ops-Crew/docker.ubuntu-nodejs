@@ -77,6 +77,6 @@ USER ${SVC_USER}
 RUN ["node", "-v"]
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-ENTRYPOINT ["node"];
+#ENTRYPOINT ["node"];
 
-CMD ["--print"];
+#CMD ["--print"];
