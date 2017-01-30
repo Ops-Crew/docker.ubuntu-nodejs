@@ -13,8 +13,8 @@ ARG VERSION
 
 ##  Image Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL   com.app.ubuntu-nodejs.maintainer.name="Dockerg God"           \
-        com.app.ubuntu-nodejs.maintainer.mail="docker.god@gmail.com"  \
+LABEL   com.app.ubuntu-nodejs.maintainer.name="Kevix"                 \
+        com.app.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com" \
         com.app.ubuntu-nodejs.description="Dockerized Node.js server" \
         com.app.ubuntu-nodejs.build-date=${BUILD_DATE}                \
         com.app.ubuntu-nodejs.vcs-url=${VCS_URL}                      \
@@ -56,11 +56,11 @@ RUN set -ex     \
 ##  Node.js Setup
 ##  --------------------------------------------------------------------------------  ##
 RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
- && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"  \
- && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc         \
+ && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
+ && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                            \
  && grep "node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c -             \
  && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
- && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt                 \
+ && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 ##  Tools Setup
