@@ -5,36 +5,35 @@
 ##  Source Image
 FROM buildpack-deps:jessie
 
-MAINTAINER Docker God <docker.god@gmail.com>
-
-## Build-time metadata as defined at http://label-schema.org
+##  Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_URL
 ARG VCS_REF
 ARG VERSION
 
-LABEL   com.app.dockergod.maintainer.name="Dockerg God"             \
-        com.app.dockergod.maintainer.mail="docker.god@gmail.com"    \
-        com.app.dockergod.description="Dockerized Node.js server"   \
-        com.app.dockergod.build-date=${BUILD_DATE}                  \
-        com.app.dockergod.vcs-url=${VCS_URL}                        \
-        com.app.dockergod.vcs-ref=${VCS_REF}                        \
-        com.app.dockergod.dockerfile.version=${VERSION}             \
-        com.app.dockergod.is-production="true"
-
-##  Node.js Version
+##  Image Metadata
 ##  --------------------------------------------------------------------------------  ##
-ENV NPM_CONFIG_LOGLEVEL="${NPM_CONFIG_LOGLEVEL:-info}"  \
-    NODE_VERSION="${NODE_VERSION:-6.9.1}"               \
-    SVC_VERSION="${SVC_VERSION:-6.9.1}"                 \
+LABEL   com.app.ubuntu-nodejs.maintainer.name="Kevix"                 \
+        com.app.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com" \
+        com.app.ubuntu-nodejs.description="Dockerized Node.js server" \
+        com.app.ubuntu-nodejs.build-date=${BUILD_DATE}                \
+        com.app.ubuntu-nodejs.vcs-url=${VCS_URL}                      \
+        com.app.ubuntu-nodejs.vcs-ref=${VCS_REF}                      \
+        com.app.ubuntu-nodejs.dockerfile.version=${VERSION}           \
+        com.app.ubuntu-nodejs.is-production="true"
+
+##  Environment Variables
+##  --------------------------------------------------------------------------------  ##
+ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
+    NODE_VERSION=${NODE_VERSION:-7.4.0}              \
     SVC_USER=${SVC_USER:-node}
 
-## Create the node.js system user
+##  Create the node.js system user
 ##  --------------------------------------------------------------------------------  ##
-RUN groupadd -r ${SVC_USER}     \
- && useradd -r -g ${SVC_USER}   \
-            --shell /bin/bash   \
-            --create-home       \
+RUN groupadd -r ${SVC_USER}   \
+ && useradd -r -g ${SVC_USER} \
+            --shell /bin/bash \
+            --create-home     \
             ${SVC_USER}
 
 ##  gpg keys listed at https://github.com/nodejs/node
@@ -50,33 +49,39 @@ RUN set -ex     \
         B9AE9905FFD7803F25714661B63B535A4C206CA9 \
         C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
   ; do  \
-        gpg --keyserver ha.pool.sks-keyservers.net  \
-            --recv-keys "$key";                     \
+        gpg --keyserver ha.pool.sks-keyservers.net \
+            --recv-keys "$key";                    \
     done
 
-# Node.js Setup
+##  Node.js Setup
+##  --------------------------------------------------------------------------------  ##
 RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
  && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                            \
  && grep "node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c -             \
- && tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-components=1        \
+ && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
  && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-# tools
-RUN apt-get -q update                           \
- && apt-get -y install --no-install-recommends  \
-            git                                 \
-            wget                                \
- && apt-get clean                               \
- && rm -rf /var/lib/apt/lists/*                 \
- && printf "\n\n\n\tDEPLOYED - \t Node.js:$(node -v) \n\n\n";
-# /**/
+##  Tools Setup
+##  --------------------------------------------------------------------------------  ##
+RUN apt-get -q update               \
+ && apt-get -y install              \
+            --no-install-recommends \
+            curl                    \
+            git                     \
+            nicstat                 \
+            netstat-nat             \
+            wget                    \
+ && apt-get clean                   \
+ && rm -rf /var/lib/apt/lists/*     \
+ && printf "\n\n\n\tDEPLOYED - \t Node.js:$(node -v) \n\n\n";  #/**/
 
+##  Communication
+##  --------------------------------------------------------------------------------  ##
 USER ${SVC_USER}
-RUN ["node", "-v"]
+#RUN ["node", "-v"]
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
 #ENTRYPOINT ["node"];
-
 #CMD ["--print"];

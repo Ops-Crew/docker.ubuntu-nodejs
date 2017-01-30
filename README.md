@@ -12,11 +12,11 @@
 
 ### Packages Versions ###
 
-Package | Version  | Tag
---------|----------|----
-Container | 0.0.1 | dev
+ Package | Version  | Tag
+---------|----------|-----
+Container | 0.0.2 | dev
 Linux   | 4.4.0-45 | generic
-Node.js | v6.9.1 | x64
+Node.js | 7.4.0 | x64
 
 --------
 
