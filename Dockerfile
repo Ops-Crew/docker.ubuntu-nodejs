@@ -24,9 +24,8 @@ LABEL   com.app.ubuntu-nodejs.maintainer.name="Dockerg God"           \
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
-ENV NPM_CONFIG_LOGLEVEL="${NPM_CONFIG_LOGLEVEL:-info}"          \
-    NODE_VERSION="${NODE_VERSION:-7.4.0}"                       \
-    NODE_SRC_ARCHIVE="node-v${NODE_VERSION}-linux-x64.tar.xz"   \
+ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
+    NODE_VERSION=${NODE_VERSION:-7.4.0}              \
     SVC_USER=${SVC_USER:-node}
 
 ##  Create the node.js system user
@@ -56,12 +55,12 @@ RUN set -ex     \
 
 ##  Node.js Setup
 ##  --------------------------------------------------------------------------------  ##
-RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_SRC_ARCHIVE}" \
+RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"  \
  && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc         \
- && grep "${NODE_SRC_ARCHIVE}\$" SHASUMS256.txt | sha256sum -c -             \
- && tar -xJf ${NODE_SRC_ARCHIVE} -C /usr/local --strip-components=1          \
- && rm ${NODE_SRC_ARCHIVE} SHASUMS256.txt.asc SHASUMS256.txt                 \
+ && grep "node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c -             \
+ && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
+ && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt                 \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 ##  Tools Setup
