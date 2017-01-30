@@ -59,6 +59,7 @@ function dockerBuild () {
     COM_BUILD_IMAGE="docker -D                  \
                             --log-level=debug   \
         build                                   \
+          --quiet                               \
           --disable-content-trust=true          \
           --build-arg BUILD_DATE=${BUILD_DATE}  \
           --build-arg VERSION=${NODE_VERSION}   \
@@ -69,9 +70,7 @@ function dockerBuild () {
           . "
 
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
-    #BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
-    ${COM_BUILD_IMAGE}
-    BUILD_IMAGE_ID=$?
+    BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
     printf "\tBUILD_IMAGE_ID = ${BUILD_IMAGE_ID}\n";
 }
 #      --pull                                \
@@ -102,7 +101,6 @@ EOM
     RETVAL=1
 }
 
-#[[ -n "$1" ]] || usage
 
 ##  ------------------------------------------------------------------------  ##
 ##                                  EXECUTION                                 ##
