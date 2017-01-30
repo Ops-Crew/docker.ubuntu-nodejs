@@ -72,8 +72,6 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
             --no-install-recommends \
             curl                    \
             git                     \
-            nicstat                 \
-            netstat-nat             \
             wget                    \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
