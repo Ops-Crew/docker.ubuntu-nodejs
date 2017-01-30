@@ -5,6 +5,7 @@
 
 set -e
 trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
+cd $(dirname $0)/..
 
 ##  ------------------------------------------------------------------------  ##
 ##                              PREREQUISITES                                 ##
