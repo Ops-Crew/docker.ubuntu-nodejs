@@ -65,8 +65,9 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
  && printf "\n\n\n\tDEPLOYED - \t Node.js:$(node -v) \n\n\n"                                    \
     \
 ##  Tools Setup \
-##  --------------------------------------------------------------------------------  ##        \ 
+##  --------------------------------------------------------------------------------  ##    \ 
 ## RUN apt-get -q update         ## \ 
+ && apt-get -q update               \
  && apt-get -y install              \
             --no-install-recommends \
             curl                    \
