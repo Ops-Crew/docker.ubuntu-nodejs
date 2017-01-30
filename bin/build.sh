@@ -56,17 +56,17 @@ function dockerBuild () {
     printf "\tBuild Image = \t [${Image}]\n\n";
 
     ##  Build Docker image
-    COM_BUILD_IMAGE="docker -D    \
-      --log-level=debug \
-      build \
-      --disable-content-trust=true          \
-      --build-arg BUILD_DATE=${BUILD_DATE}  \
-      --build-arg VERSION=${NODE_VERSION}   \
-      --build-arg VCS_URL=${VCS_URL}        \
-      --build-arg VCS_REF=${VCS_REF}        \
-      -f Dockerfile                         \
-      -t ${Image}:${TAG}                    \
-      . "
+    COM_BUILD_IMAGE="docker -D                  \
+                            --log-level=debug   \
+        build                                   \
+          --disable-content-trust=true          \
+          --build-arg BUILD_DATE=${BUILD_DATE}  \
+          --build-arg VERSION=${NODE_VERSION}   \
+          --build-arg VCS_URL=${VCS_URL}        \
+          --build-arg VCS_REF=${VCS_REF}        \
+          -f Dockerfile                         \
+          -t ${Image}:${TAG}                    \
+          . "
 
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
     #BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
