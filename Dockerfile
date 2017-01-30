@@ -24,9 +24,8 @@ LABEL   com.app.ubuntu-nodejs.maintainer.name="Dockerg God"           \
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
-ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}          \
-    NODE_VERSION=${NODE_VERSION:-7.4.0}                       \
-    NODE_SRC_ARCHIVE=node-v${NODE_VERSION}-linux-x64.tar.xz   \
+ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
+    NODE_VERSION=${NODE_VERSION:-7.4.0}              \
     SVC_USER=${SVC_USER:-node}
 
 ##  Create the node.js system user
