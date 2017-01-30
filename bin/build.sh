@@ -46,6 +46,18 @@ HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 
 printf "\n------------------------------  ${DATE}  ------------------------------\n";
 
+function usage () {
+    >&2 cat << EOM
+Build Docker Image from Dockerfile
+
+Usage: $0 <command> [<params>]
+
+    $0 usage                -   show usage information
+    $0 image [<image_id>]   -   build image
+
+EOM
+    RETVAL=1
+}
 
 function dockerBuild () {
     printf "\t$0 params: \t [$@]\n";
@@ -87,20 +99,6 @@ function log {
 
     tail -10 "${APP_LOG}"
 }
-
-function usage () {
-    >&2 cat << EOM
-Build Docker Image from Dockerfile
-
-Usage: $0 <command> [<params>]
-
-    $0 usage                -   show usage information
-    $0 image [<image_id>]   -   build image
-
-EOM
-    RETVAL=1
-}
-
 
 ##  ------------------------------------------------------------------------  ##
 ##                                  EXECUTION                                 ##
