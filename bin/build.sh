@@ -87,9 +87,8 @@ function dockerBuild () {
           . "
 
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
-    ${COM_BUILD_IMAGE}
-    BUILD_IMAGE_ID=$?
-    printf "\tBUILD_IMAGE_ID = ${BUILD_IMAGE_ID}\n";
+    BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
+    echo -e "\t${BWhite}BUILD_IMAGE_ID${NC} = ${BUILD_IMAGE_ID}\n";
 }
 #      --pull                                \
 #      --force-rm                            \
