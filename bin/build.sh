@@ -6,6 +6,21 @@
 set -e
 trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
 
+source ./functions.sh
+
+function usage () {
+    >&2 cat << EOM
+Build Docker Image from Dockerfile
+
+Usage: $0 <command> [<params>]
+
+    $0 usage                -   show usage information
+    $0 image [<image_id>]   -   build image
+
+EOM
+    RETVAL=1
+}
+
 ##  ------------------------------------------------------------------------  ##
 ##                              PREREQUISITES                                 ##
 ##  ------------------------------------------------------------------------  ##
@@ -49,19 +64,6 @@ HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 
 printf "\n------------------------------  ${DATE}  ------------------------------\n";
 
-function usage () {
-    >&2 cat << EOM
-Build Docker Image from Dockerfile
-
-Usage: $0 <command> [<params>]
-
-    $0 usage                -   show usage information
-    $0 image [<image_id>]   -   build image
-
-EOM
-    RETVAL=1
-}
-
 function dockerBuild () {
     printf "\t$0 params: \t [$@]\n";
     Image=$1;
@@ -85,7 +87,8 @@ function dockerBuild () {
           . "
 
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
-    BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
+    ${COM_BUILD_IMAGE}
+    BUILD_IMAGE_ID=$?
     printf "\tBUILD_IMAGE_ID = ${BUILD_IMAGE_ID}\n";
 }
 #      --pull                                \
@@ -115,7 +118,6 @@ case "$1" in
         RETVAL=1
     ;;
 
-
     "usage")
         usage
     ;;
@@ -129,10 +131,10 @@ case "$1" in
     *)
         RETVAL=1
     ;;
+
 esac
 
 printf "\n\n[LOG]\tALL DONE\n"
-printf "\n\t-------------------------\t EOF: $0 $1 \t----------------------------\n";
 
 exit $RETVAL
 
