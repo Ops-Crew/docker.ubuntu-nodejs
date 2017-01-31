@@ -20,7 +20,7 @@ echo "OPTS = [${OPTS}]"
 ##                                ENVIRONMENT                                 ##
 ##  ------------------------------------------------------------------------  ##
 
-for ENVF in `ls "${ENVD}/.env*"`
+for ENVF in `ls ${ENVD}/.env*`
     do
         # ENVF="${ENVD}/${fe}"
         #printf "CHECK ENVIRONMENT FILE [${ENVF}]\n";
