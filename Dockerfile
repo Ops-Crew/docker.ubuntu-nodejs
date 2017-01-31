@@ -15,14 +15,14 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL   com.app.ubuntu-nodejs.maintainer.name="Kevix"                 \
-        com.app.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com" \
-        com.app.ubuntu-nodejs.description="Dockerized Node.js server" \
-        com.app.ubuntu-nodejs.build-date=${BUILD_DATE}                \
-        com.app.ubuntu-nodejs.vcs-url=${VCS_URL}                      \
-        com.app.ubuntu-nodejs.vcs-ref=${VCS_REF}                      \
-        com.app.ubuntu-nodejs.dockerfile.version=${VERSION}           \
-        com.app.ubuntu-nodejs.is-production="true"
+LABEL   com.docker.hub.ubuntu-nodejs.maintainer.name="Kevix"                    \
+        com.docker.hub.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com"    \
+        com.docker.hub.ubuntu-nodejs.description="Dockerized Node.js server"    \
+        com.docker.hub.ubuntu-nodejs.build-date=${BUILD_DATE}                   \
+        com.docker.hub.ubuntu-nodejs.vcs-url=${VCS_URL}                         \
+        com.docker.hub.ubuntu-nodejs.vcs-ref=${VCS_REF}                         \
+        com.docker.hub.ubuntu-nodejs.dockerfile.version=${VERSION}              \
+        com.docker.hub.ubuntu-nodejs.is-production="true"
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
