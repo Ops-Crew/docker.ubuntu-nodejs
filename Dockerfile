@@ -11,7 +11,7 @@ ARG VCS_URL
 ARG VCS_REF
 ARG VERSION
 
-##  Image Metadata
+##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
 LABEL   com.app.ubuntu-nodejs.maintainer.name="Kevix"                 \
         com.app.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com" \
