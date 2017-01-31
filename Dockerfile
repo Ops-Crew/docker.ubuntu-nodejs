@@ -3,9 +3,11 @@
 ##  ================================================================================  ##
 
 ##  Source Image
+##  --------------------------------------------------------------------------------  ##
 FROM buildpack-deps:jessie
 
 ##  Build-time metadata as defined at http://label-schema.org
+##  --------------------------------------------------------------------------------  ##
 ARG BUILD_DATE
 ARG VCS_URL
 ARG VCS_REF
@@ -34,11 +36,12 @@ RUN groupadd -r ${SVC_USER}   \
  && useradd -r -g ${SVC_USER} \
             --shell /bin/bash \
             --create-home     \
-            ${SVC_USER}
-
-##  gpg keys listed at https://github.com/nodejs/node
-##  --------------------------------------------------------------------------------  ##
-RUN set -ex     \
+            ${SVC_USER}       \
+    \
+##  gpg keys listed at https://github.com/nodejs/node   \ 
+##  --------------------------------------------------------------------------------  ##    \ 
+#RUN set -ex #  \ 
+ && set -ex     \
  && for key in  \
         9554F04D7259F04124DE6B476D5A82AC7E37093B \
         94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
@@ -80,7 +83,6 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
 USER ${SVC_USER}
-#RUN ["node", "-v"]
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
 #ENTRYPOINT ["node"];
