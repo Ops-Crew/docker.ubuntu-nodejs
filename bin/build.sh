@@ -1,8 +1,7 @@
 #!/bin/bash
 ##  ------------------------------------------------------------------------  ##
-##                Build docker image from provided Dockerfile                 ##
+##                               Build Docker Image                           ##
 ##  ------------------------------------------------------------------------  ##
-printf "\n\t---------------------\t BOF: $0 $1 \t---------------------------\n";
 
 set -e
 trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
@@ -17,9 +16,13 @@ OPTS=$@
 
 echo "OPTS = [${OPTS}]"
 
-for fe in .env.hub .env
+##  ------------------------------------------------------------------------  ##
+##                                ENVIRONMENT                                 ##
+##  ------------------------------------------------------------------------  ##
+
+for ENVF in `ls "${ENVD}/.env*"`
     do
-        ENVF="${ENVD}/${fe}"
+        # ENVF="${ENVD}/${fe}"
         #printf "CHECK ENVIRONMENT FILE [${ENVF}]\n";
         if [ -f "${ENVF}" ]; then
            . "${ENVF}";
