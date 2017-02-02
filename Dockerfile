@@ -82,7 +82,7 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
-USER ${SVC_USER}
+#USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
 #ENTRYPOINT ["node"];
