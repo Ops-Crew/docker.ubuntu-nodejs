@@ -78,7 +78,7 @@ RUN curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
             wget                    \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
- && printf "\n\n\tDEPLOYED - \t TOOLS \n\n";  #/**/
+ && printf "\n\n\tDEPLOYED - \t TOOLS \n\n";  # /**/
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##

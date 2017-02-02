@@ -1,18 +1,10 @@
 #!/bin/bash
 ##  ------------------------------------------------------------------------  ##
-##                         Commonly Used Functions file                       ##
+##                            Commonly Used Functions                         ##
 ##  ------------------------------------------------------------------------  ##
 
-function loadEnv () {
-    ENVD=$1
-    ENVD=${ENVD:-./}
-    for ENVF in `ls ${ENVD}.env*`
-        do
-            if [ -f "${ENVF}" ]; then
-               . "${ENVF}";
-               printf "SOURCE FROM: ${ENVF}\n";
-            fi
-        done
+function log () {
+    printf "$(date +"%Y%m%d%H%M%S")%s\n" "$@";
 }
 
 function info () {
@@ -30,6 +22,18 @@ function fatal () {
     RETVAL=1
 }
 
+function loadEnv () {
+    local ENVD=$1
+    ENVD=${ENVD:-.}
+    for ENVF in `ls ${ENVD}/.env*`
+        do
+            if [ -f "${ENVF}" ]; then
+               . "${ENVF}";
+                printf "ENV: exported vars from [${ENVF}]:\n";
+                cat ${ENVF} | sed -e "s/^/\t/g"
+            fi
+        done
+}
 
 ##  ------------------------------------------------------------------------  ##
 ##                                   CLEANUP                                  ##
@@ -64,16 +68,16 @@ function cleanup () {
 
 
 ##  ------------------------------------------------------------------------  ##
-##                              IMAGE Information                             ##
+##                               META Information                             ##
 ##  ------------------------------------------------------------------------  ##
 
-function imageInfo () {
+function metaInfo () {
     Image=$1;
-    printf "\n\tDOCKER IMAGE = [$1]\n";
+    log "\n\tmetaInfo([$1])\n";
 
     docker inspect -f '
         ##
-        ## Docker Image Metadata
+        ## Docker Metadata
         ##
 
         - Image ID: {{ "\t" }} {{ .Id }}
@@ -87,10 +91,10 @@ function imageInfo () {
         {{range $e,$v := .Config.Volumes}}VOLUME {{json $e}} {{end}}
         {{if .Config.User}}USER {{json .Config.User}} {{end}}
         {{if .Config.WorkingDir}}WORKDIR {{.Config.WorkingDir}} {{end}}
-        {{if .Config.ExposedPorts}}{{range $e,$v := .Config.ExposedPorts}}EXPOSE {{json $e}}{{end}}{{end}}
         {{if .Config.Entrypoint }}ENTRYPOINT {{ json .Config.Entrypoint}} {{ end }}
         {{if .Config.Cmd}}CMD {{json .Config.Cmd}} {{end}}
         {{with .Config}}{{ "\n\n" }}FULL_CONFIG: {{json .}} {{end}}
         ' "${Image}"
 }
+#        {{if .Config.ExposedPorts}}{{range $e,$v := .Config.ExposedPorts}}EXPOSE {{json $e}}{{end}}{{end}}
 

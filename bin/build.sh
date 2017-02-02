@@ -6,11 +6,9 @@
 set -e
 trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
 
-source ./functions.sh
-
 function usage () {
     >&2 cat << EOM
-Build Docker Image from Dockerfile
+                                Build Docker Image
 
 Usage: $0 <command> [<params>]
 
@@ -26,25 +24,19 @@ EOM
 ##  ------------------------------------------------------------------------  ##
 
 WD="$(cd $(dirname $0)/.. && pwd -P)"
+BIND="${WD}/bin"
 ENVD="${WD}/envs"
 OPTS=$@
 
-echo "OPTS = [${OPTS}]"
+source ${BIND}/common-functions.sh
+loadEnv "${ENVD}"
+
+log "ENVD:\t${ENVD}"
+log "OPTS = [${OPTS}]"
 
 ##  ------------------------------------------------------------------------  ##
 ##                                ENVIRONMENT                                 ##
 ##  ------------------------------------------------------------------------  ##
-
-for ENVF in `ls ${ENVD}/.env*`
-    do
-        # ENVF="${ENVD}/${fe}"
-        #printf "CHECK ENVIRONMENT FILE [${ENVF}]\n";
-        if [ -f "${ENVF}" ]; then
-           . "${ENVF}";
-           printf "ENV: exported vars from [${ENVF}]:\n";
-           cat ${ENVF} | sed -e "s/^/\t/g"
-        fi
-    done
 
 Image="$2"; # shift
 
@@ -89,21 +81,11 @@ function dockerBuild () {
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
     BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
     echo -e "\t${BWhite}BUILD_IMAGE_ID${NC} = ${BUILD_IMAGE_ID}\n";
+    echo ${BUILD_IMAGE_ID} > "BUILD_IMAGE.ID"
 }
 #      --pull                                \
 #      --force-rm                            \
 
-
-##  ------------------------------------------------------------------------  ##
-##                                    LOGGER                                  ##
-##  ------------------------------------------------------------------------  ##
-function log {
-    printf "DATETIME:\t[${D_T}]\n" > "${APP_LOG}"
-    printf "APP_NAME:\t[${APP_NAME}]\n" >> "${APP_LOG}"
-    printf "APP_TITLE:\t[${APP_TITLE}]\n" >> "${APP_LOG}"
-
-    tail -10 "${APP_LOG}"
-}
 
 ##  ------------------------------------------------------------------------  ##
 ##                                  EXECUTION                                 ##
@@ -125,6 +107,11 @@ case "$1" in
         printf "\tBUILD_IMAGE \t ${HUB_IMAGE}:${TAG}\n";
         dockerBuild "$2"
         RETVAL=$?
+    ;;
+
+    ii)
+        log "\tMETA INFO:" "$@"
+        metaInfo "$2"
     ;;
 
     *)
