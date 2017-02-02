@@ -3,6 +3,18 @@
 ##                         Commonly Used Functions file                       ##
 ##  ------------------------------------------------------------------------  ##
 
+function loadEnv () {
+    ENVD=$1
+    ENVD=${ENVD:-./}
+    for ENVF in `ls ${ENVD}.env*`
+        do
+            if [ -f "${ENVF}" ]; then
+               . "${ENVF}";
+               printf "SOURCE FROM: ${ENVF}\n";
+            fi
+        done
+}
+
 function info () {
     echo -e "\n${BBlue}INFO:$NC" "${@}";
 }
