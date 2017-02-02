@@ -1,32 +1,42 @@
 #!/bin/bash
 ##  ------------------------------------------------------------------------  ##
-##                Build docker image from provided Dockerfile                 ##
+##                               Build Docker Image                           ##
 ##  ------------------------------------------------------------------------  ##
-printf "\n\t---------------------\t BOF: $0 $1 \t---------------------------\n";
 
 set -e
 trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
+
+function usage () {
+    >&2 cat << EOM
+                                Build Docker Image
+
+Usage: $0 <command> [<params>]
+
+    $0 usage                -   show usage information
+    $0 image [<image_id>]   -   build image
+
+EOM
+    RETVAL=1
+}
 
 ##  ------------------------------------------------------------------------  ##
 ##                              PREREQUISITES                                 ##
 ##  ------------------------------------------------------------------------  ##
 
 WD="$(cd $(dirname $0)/.. && pwd -P)"
+BIND="${WD}/bin"
 ENVD="${WD}/envs"
 OPTS=$@
 
-echo "OPTS = [${OPTS}]"
+source ${BIND}/common-functions.sh
+loadEnv "${ENVD}"
 
-for fe in .env.hub .env
-    do
-        ENVF="${ENVD}/${fe}"
-        #printf "CHECK ENVIRONMENT FILE [${ENVF}]\n";
-        if [ -f "${ENVF}" ]; then
-           . "${ENVF}";
-           printf "ENV: exported vars from [${ENVF}]:\n";
-           cat ${ENVF} | sed -e "s/^/\t/g"
-        fi
-    done
+log "ENVD:\t${ENVD}"
+log "OPTS = [${OPTS}]"
+
+##  ------------------------------------------------------------------------  ##
+##                                ENVIRONMENT                                 ##
+##  ------------------------------------------------------------------------  ##
 
 Image="$2"; # shift
 
@@ -46,7 +56,6 @@ HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 
 printf "\n------------------------------  ${DATE}  ------------------------------\n";
 
-
 function dockerBuild () {
     printf "\t$0 params: \t [$@]\n";
     Image=$1;
@@ -59,6 +68,7 @@ function dockerBuild () {
     COM_BUILD_IMAGE="docker -D                  \
                             --log-level=debug   \
         build                                   \
+          --quiet                               \
           --disable-content-trust=true          \
           --build-arg BUILD_DATE=${BUILD_DATE}  \
           --build-arg VERSION=${NODE_VERSION}   \
@@ -69,40 +79,13 @@ function dockerBuild () {
           . "
 
     printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
-    #BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
-    ${COM_BUILD_IMAGE}
-    BUILD_IMAGE_ID=$?
-    printf "\tBUILD_IMAGE_ID = ${BUILD_IMAGE_ID}\n";
+    BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
+    echo -e "\t${BWhite}BUILD_IMAGE_ID${NC} = ${BUILD_IMAGE_ID}\n";
+    echo ${BUILD_IMAGE_ID} > "BUILD_IMAGE.ID"
 }
 #      --pull                                \
 #      --force-rm                            \
 
-
-##  ------------------------------------------------------------------------  ##
-##                                    LOGGER                                  ##
-##  ------------------------------------------------------------------------  ##
-function log {
-    printf "DATETIME:\t[${D_T}]\n" > "${APP_LOG}"
-    printf "APP_NAME:\t[${APP_NAME}]\n" >> "${APP_LOG}"
-    printf "APP_TITLE:\t[${APP_TITLE}]\n" >> "${APP_LOG}"
-
-    tail -10 "${APP_LOG}"
-}
-
-function usage () {
-    >&2 cat << EOM
-Build Docker Image from Dockerfile
-
-Usage: $0 <command> [<params>]
-
-    $0 usage                -   show usage information
-    $0 image [<image_id>]   -   build image
-
-EOM
-    RETVAL=1
-}
-
-#[[ -n "$1" ]] || usage
 
 ##  ------------------------------------------------------------------------  ##
 ##                                  EXECUTION                                 ##
@@ -116,7 +99,6 @@ case "$1" in
         RETVAL=1
     ;;
 
-
     "usage")
         usage
     ;;
@@ -127,13 +109,18 @@ case "$1" in
         RETVAL=$?
     ;;
 
+    ii)
+        log "\tMETA INFO:" "$@"
+        metaInfo "$2"
+    ;;
+
     *)
         RETVAL=1
     ;;
+
 esac
 
 printf "\n\n[LOG]\tALL DONE\n"
-printf "\n\t-------------------------\t EOF: $0 $1 \t----------------------------\n";
 
 exit $RETVAL
 
