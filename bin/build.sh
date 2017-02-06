@@ -12,8 +12,8 @@ function usage () {
 
 Usage: $0 <command> [<params>]
 
-    $0 usage                -   show usage information
-    $0 image [<image_id>]   -   build image
+    $0 usage                    -   show usage information
+    $0 <image | i> [<image_id>] -   build image
 
 EOM
     RETVAL=1
