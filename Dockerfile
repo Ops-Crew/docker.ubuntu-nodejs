@@ -17,11 +17,12 @@ ARG VERSION
 ##  --------------------------------------------------------------------------------  ##
 LABEL   com.docker.hub.ubuntu-nodejs.maintainer.name="Kevix"                    \
         com.docker.hub.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com"    \
-        com.docker.hub.ubuntu-nodejs.description="Dockerized Node.js server"    \
+        com.docker.hub.ubuntu-nodejs.description="Dockerized Node.js Server"    \
         com.docker.hub.ubuntu-nodejs.build-date=${BUILD_DATE}                   \
         com.docker.hub.ubuntu-nodejs.vcs-url=${VCS_URL}                         \
         com.docker.hub.ubuntu-nodejs.vcs-ref=${VCS_REF}                         \
         com.docker.hub.ubuntu-nodejs.dockerfile.version=${VERSION}              \
+        com.docker.hub.ubuntu-nodejs.license="MIT"                              \
         com.docker.hub.ubuntu-nodejs.is-production="true"
 
 ##  Environment Variables
