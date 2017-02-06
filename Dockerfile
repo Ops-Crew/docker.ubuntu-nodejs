@@ -37,7 +37,7 @@ RUN groupadd -r ${SVC_USER}   \
             --shell /bin/bash \
             --create-home     \
             ${SVC_USER}       \
-    \
+\
 ##  gpg keys listed at https://github.com/nodejs/node   \ 
 ##  --------------------------------------------------------------------------------  ##    \ 
  && set -ex     \
@@ -54,7 +54,7 @@ RUN groupadd -r ${SVC_USER}   \
         gpg --keyserver ha.pool.sks-keyservers.net \
             --recv-keys "$key";                    \
     done    \
-    \
+\
 ##  Node.js Setup   \ 
 ##  --------------------------------------------------------------------------------  ##        \ 
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
@@ -65,7 +65,7 @@ RUN groupadd -r ${SVC_USER}   \
  && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
  && printf "\n\n\tDEPLOYED - \t Node.js:$(node -v) \n\n"                                        \
-    \
+\
 ##  Tools Setup \
 ##  --------------------------------------------------------------------------------  ##    \ 
  && apt-get -q update               \
