@@ -4,15 +4,15 @@
 ##  ------------------------------------------------------------------------  ##
 
 function log () {
-    printf "$(date +"%Y%m%d%H%M%S")%s\n" "$@";
+    printf "$(date +"%Y%m%d%H%M%S")\t%s\n" "$@";
 }
 
 function info () {
-    echo -e "\n${BBlue}INFO:$NC" "${@}";
+    echo -e "\n${BBlue}INFO:${NC}" "${@}";
 }
 
 function error () {
-    echo -e "\n${BRed}ERROR:$NC" "${@}" 1>&2;
+    echo -e "\n${BRed}ERROR:${NC}" "${@}" 1>&2;
 }
 
 function fatal () {
