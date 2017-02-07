@@ -29,8 +29,8 @@ function loadEnv () {
         do
             if [ -f "${ENVF}" ]; then
                . "${ENVF}";
-                printf "ENV: exported vars from [${ENVF}]:\n";
-                cat ${ENVF} | sed -e "s/^/\t/g"
+                echo -e "${BWhite}ENV: exported vars from [${ENVF}]:\n";
+                cat "${ENVF}" | sed -e "s/^/\t/g"
             fi
         done
 }

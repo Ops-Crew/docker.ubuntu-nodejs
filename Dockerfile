@@ -4,8 +4,7 @@
 
 ##  Source Image
 ##  --------------------------------------------------------------------------------  ##
-# FROM buildpack-deps:jessie
-FROM ubuntu:16.04
+FROM buildpack-deps:jessie
 
 ##  Build-time metadata as defined at http://label-schema.org
 ##  --------------------------------------------------------------------------------  ##
