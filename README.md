@@ -6,7 +6,7 @@
 
 --------
 
-#### Repository Provide a Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled. ####
+#### Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled. ####
 
 --------
 
@@ -14,9 +14,9 @@
 
  Package | Version  | Tag
 ---------|----------|-----
-Container | 0.0.2 | dev
-Linux   | 4.4.0-45 | generic
-Node.js | 7.4.0 | x64
+ Container | 0.0.2 | dev
+ Linux   | 4.4.0-45 | generic
+ Node.js | 7.4.0 | x64
 
 --------
 
