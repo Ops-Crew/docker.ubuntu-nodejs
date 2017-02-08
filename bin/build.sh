@@ -8,7 +8,7 @@ trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
 
 function usage () {
     >&2 cat << EOM
-                                Build Docker Image
+            ${BWhite}Build Docker Image${NC}
 
 Usage: $0 <command> [<params>]
 
@@ -19,6 +19,7 @@ EOM
     RETVAL=1
 }
 
+
 ##  ------------------------------------------------------------------------  ##
 ##                              PREREQUISITES                                 ##
 ##  ------------------------------------------------------------------------  ##
@@ -28,7 +29,7 @@ BIND="${WD}/bin"
 ENVD="${WD}/envs"
 OPTS=$@
 
-source ${BIND}/common-functions.sh
+source ${BIND}/f.sh
 loadEnv "${ENVD}"
 
 log "ENVD:\t${ENVD}"
