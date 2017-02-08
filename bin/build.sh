@@ -33,7 +33,7 @@ source ${BIND}/f.sh
 loadEnv "${ENVD}"
 
 log "ENVD:\t${ENVD}"
-log "OPTS = [${OPTS}]"
+log "OPTS:\t[${OPTS}]"
 
 ##  ------------------------------------------------------------------------  ##
 ##                                ENVIRONMENT                                 ##
