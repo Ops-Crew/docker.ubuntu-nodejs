@@ -55,7 +55,7 @@ VCS_REF="$(git rev-parse --short HEAD)"
 TAG=${NODE_VERSION:-${VCF_REF}}
 HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 
-printf "\n------------------------------  ${DATE}  ------------------------------\n";
+printf "\n----------------------------  ${DATE}  ---------------------------\n";
 
 function dockerBuild () {
     printf "\t$0 params: \t [$@]\n";
