@@ -38,7 +38,6 @@ RUN                                 \
                 --force             \
                   ${SVC_USER}       \
  && useradd     --system            \
-                --no-create-home    \
                 --gid ${SVC_USER}   \
                 --shell /bin/bash   \
                   ${SVC_USER}       \
@@ -71,9 +70,9 @@ RUN                                 \
             wget                    \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
- && printf "\n\n\tDEPLOYED: \t TOOLS \n\n";  # /**/ \
+ && printf "\n\tDEPLOYED: \t TOOLS \n" \
 \
-##  Node.js Setup                                   \ 
+##  Node.js Setup   \
 ##  --------------------------------------------------------------------------------  ##        \ 
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
