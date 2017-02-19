@@ -36,11 +36,11 @@ ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
 RUN                                 \
     groupadd    --system            \
                 --force             \
-                  ${SVC_USER}       \
+                  "${SVC_USER}"     \
  && useradd     --system            \
-                --gid ${SVC_USER}   \
+                --gid "${SVC_USER}" \
                 --shell /bin/bash   \
-                  ${SVC_USER}       \
+                  "${SVC_USER}"     \
 \
 ##  GPG keys listed at https://github.com/nodejs/node   \ 
 ##  --------------------------------------------------------------------------------  ## \ 
