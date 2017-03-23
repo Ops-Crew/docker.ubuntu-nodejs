@@ -1,19 +1,26 @@
 #!/bin/bash
 ##  ------------------------------------------------------------------------  ##
-##                            Commonly Used Functions                         ##
+##                      f.sh:   Commonly Used Functions                       ##
 ##  ------------------------------------------------------------------------  ##
 
+
+##  ------------------------------------------------------------------------  ##
+##                                    LOGGERS                                 ##
+##  ------------------------------------------------------------------------  ##
 function log () {
     printf "$(date +"%Y%m%d%H%M%S")\t%s\n" "$@";
 }
 
+
 function info () {
-    echo -e "\n${BBlue}INFO:${NC}" "${@}";
+    echo -en "\n${BBlue}INFO:${NC}" "${@}";
 }
 
+
 function error () {
-    echo -e "\n${BRed}ERROR:${NC}" "${@}" 1>&2;
+    echo -en "\n${BRed}ERROR:${NC}" "${@}" 1>&2;
 }
+
 
 function fatal () {
     printf "**********\n"
@@ -22,6 +29,26 @@ function fatal () {
     RETVAL=1
 }
 
+
+function log2 {
+    printf "DATETIME:\t[${D_T}]\n" > "${APP_LOG}"
+    printf "APP_NAME:\t[${APP_NAME}]\n" >> "${APP_LOG}"
+    printf "APP_TITLE:\t[${APP_TITLE}]\n" >> "${APP_LOG}"
+    printf "APP_DOMAIN:\t[${APP_DOMAIN}]\n" >> "${APP_LOG}"
+    printf "DB_HOST:\t[${DB_HOST}]\n" >> "${APP_LOG}"
+    printf "DB_NAME:\t[${DB_NAME}]\n" >> "${APP_LOG}"
+    printf "DB_USER:\t[${DB_USER}]\n" >> "${APP_LOG}"
+    printf "DB_PASS:\t[${DB_PASS}]\n" >> "${APP_LOG}"
+    printf "DB_TAG:\t[${DB_TAG}]\n" >> "${APP_LOG}"
+
+    tail -10 "${APP_LOG}"
+}
+
+
+##  ------------------------------------------------------------------------  ##
+##              Load Environment Variables From .env Files
+##  ------------------------------------------------------------------------  ##
+
 function loadEnv () {
     local ENVD=$1
     ENVD=${ENVD:-.}
@@ -29,36 +56,39 @@ function loadEnv () {
         do
             if [ -f "${ENVF}" ]; then
                . "${ENVF}";
-                printf "ENV: exported vars from [${ENVF}]:\n";
-                cat ${ENVF} | sed -e "s/^/\t/g"
+                echo -e "${BWhite}ENV: exported vars from [${ENVF}]:\n";
+                cat "${ENVF}" | sed -e "s/^/\t/g"
             fi
         done
 }
+
 
 ##  ------------------------------------------------------------------------  ##
 ##                                   CLEANUP                                  ##
 ##  ------------------------------------------------------------------------  ##
 
-##  Cleanup images
+##  Images
 function cleanImages () {
-    info Cleanup images
+    fatal Cleanup images
     docker rmi $(docker images | grep '<none>' | awk '{print $3}')
 }
 
-##  Clean up exited docker containers
+
+##  Exited Docker Containers
 function cleanContainers () {
-    info Clean up exited docker containers
-    # docker rm -v $(docker ps -aq -f status=exited)
+    error Clean up exited docker containers
     docker container prune -f
 }
 
-##  Remove “dangling” volumes - volumes that are no longer referenced by a container
+
+##  “dangling” volumes - not referenced by a container
 function cleanVolumes () {
     info Remove “dangling” volumes
     docker volume prune -f
 }
 
-##  Clean up ALL
+
+##  ALL Cleanup Steps Together
 function cleanup () {
     info Clean up ALL
     cleanContainers

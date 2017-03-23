@@ -4,8 +4,7 @@
 
 ##  Source Image
 ##  --------------------------------------------------------------------------------  ##
-# FROM buildpack-deps:jessie
-FROM ubuntu:16.04
+FROM buildpack-deps:jessie
 
 ##  Build-time metadata as defined at http://label-schema.org
 ##  --------------------------------------------------------------------------------  ##
@@ -37,12 +36,11 @@ ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
 RUN                                 \
     groupadd    --system            \
                 --force             \
-                  ${SVC_USER}       \
+                  "${SVC_USER}"     \
  && useradd     --system            \
-                --no-create-home    \
-                --gid ${SVC_USER}   \
+                --gid "${SVC_USER}" \
                 --shell /bin/bash   \
-                  ${SVC_USER}       \
+                  "${SVC_USER}"     \
 \
 ##  GPG keys listed at https://github.com/nodejs/node   \ 
 ##  --------------------------------------------------------------------------------  ## \ 
@@ -61,17 +59,6 @@ RUN                                 \
             --recv-keys "$key";                     \
     done                                            \
 \
-##  Node.js Setup                                   \ 
-##  --------------------------------------------------------------------------------  ##        \ 
- && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
- && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
- && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                            \
- && grep "node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c -             \
- && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
- && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
- && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
- && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) \n\n"                                         \
-\
 ##  Tools Setup                     \
 ##  --------------------------------------------------------------------------------  ## \ 
  && apt-get -q update               \
@@ -83,7 +70,18 @@ RUN                                 \
             wget                    \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
- && printf "\n\n\tDEPLOYED: \t TOOLS \n\n";  # /**/
+ && printf "\n\tDEPLOYED: \t TOOLS \n" \
+\
+##  Node.js Setup   \
+##  --------------------------------------------------------------------------------  ##        \ 
+ && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
+ && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
+ && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                            \
+ && grep "node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c -             \
+ && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
+ && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
+ && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
+ && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) \n\n"
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##

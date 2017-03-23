@@ -8,7 +8,7 @@ trap 'echo >&2 Ctrl+C captured, exiting; exit 1' SIGINT
 
 function usage () {
     >&2 cat << EOM
-                                Build Docker Image
+            ${BWhite}Build Docker Image${NC}
 
 Usage: $0 <command> [<params>]
 
@@ -19,6 +19,7 @@ EOM
     RETVAL=1
 }
 
+
 ##  ------------------------------------------------------------------------  ##
 ##                              PREREQUISITES                                 ##
 ##  ------------------------------------------------------------------------  ##
@@ -28,11 +29,11 @@ BIND="${WD}/bin"
 ENVD="${WD}/envs"
 OPTS=$@
 
-source ${BIND}/common-functions.sh
+source ${BIND}/f.sh
 loadEnv "${ENVD}"
 
 log "ENVD:\t${ENVD}"
-log "OPTS = [${OPTS}]"
+log "OPTS:\t[${OPTS}]"
 
 ##  ------------------------------------------------------------------------  ##
 ##                                ENVIRONMENT                                 ##
@@ -54,7 +55,7 @@ VCS_REF="$(git rev-parse --short HEAD)"
 TAG=${NODE_VERSION:-${VCF_REF}}
 HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 
-printf "\n------------------------------  ${DATE}  ------------------------------\n";
+printf "\n----------------------------  ${DATE}  ---------------------------\n";
 
 function dockerBuild () {
     printf "\t$0 params: \t [$@]\n";
