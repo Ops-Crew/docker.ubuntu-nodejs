@@ -18,19 +18,22 @@
  Linux   | 4.4.0-45 | generic
  Node.js | 7.4.0 | x64
 
+### Build and Deploy ###
 --------
 
-### Build and Deploy ###
+#### Setup
 
-* Setup
-    ```docker pull tbaltrushaitis/ubuntu-nodejs```
-    ```docker pull tbaltrushaitis/ubuntu-nodejs:latest```
-    ```docker pull tbaltrushaitis/ubuntu-nodejs:v7.4.0```
-    ```docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1```
+```bash
 
-* Configuration
-* Dependencies
-* Deploy
+docker pull tbaltrushaitis/ubuntu-nodejs
+docker pull tbaltrushaitis/ubuntu-nodejs:latest
+docker pull tbaltrushaitis/ubuntu-nodejs:v7.4.0
+docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
+```
+
+#### Configuration
+#### Dependencies
+#### Deploy
 
 --------
 
