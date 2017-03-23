@@ -23,26 +23,28 @@
 ### Build and Deploy ###
 
 * Setup
+    ```docker pull tbaltrushaitis/ubuntu-nodejs```
+    ```docker pull tbaltrushaitis/ubuntu-nodejs:latest```
+    ```docker pull tbaltrushaitis/ubuntu-nodejs:v7.4.0```
+    ```docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1```
+
 * Configuration
 * Dependencies
-* Database configuration
-* Deployment instructions
+* Deploy
 
 --------
 
 ### Authors and Contributors ###
 
-##### Development team #####
+##### DevTeam #####
   + @tbaltrushaitis
-  + @soldat79_001
 
-##### Contributors list #####
-  + @tbaltrushaitis
-  + @maybeyou?
+##### Contributors #####
+  - N/A
 
 --------
 
-### More Useful Info ###
+### Useful Info ###
 
  - [Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
  - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
