@@ -19,30 +19,36 @@
  Linux   | 4.4.0-45 | generic
  Node.js | 7.10.0 | latest
 
+### Build and Deploy ###
 --------
 
-### Build and Deploy ###
+#### Setup
 
-* Setup
-* Configuration
-* Dependencies
-* Database configuration
-* Deployment instructions
+```bash
+
+docker pull tbaltrushaitis/ubuntu-nodejs
+docker pull tbaltrushaitis/ubuntu-nodejs:latest
+docker pull tbaltrushaitis/ubuntu-nodejs:v7.4.0
+docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
+```
+
+#### Configuration
+#### Dependencies
+#### Deploy
 
 --------
 
 ### Authors and Contributors ###
 
-##### Development team #####
+##### DevTeam #####
   + @tbaltrushaitis
 
-##### Contributors list #####
-  + @tbaltrushaitis
-  + @maybeyou?
+##### Contributors #####
+  - N/A
 
 --------
 
-### More Useful Info ###
+### Useful Info ###
 
  - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
  - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
