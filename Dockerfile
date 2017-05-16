@@ -15,20 +15,20 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL   com.docker.hub.ubuntu-nodejs.maintainer.name="Kevix"                    \
-        com.docker.hub.ubuntu-nodejs.maintainer.mail="kevix.ultra@gmail.com"    \
-        com.docker.hub.ubuntu-nodejs.description="Dockerized Node.js Server"    \
-        com.docker.hub.ubuntu-nodejs.build-date=${BUILD_DATE}                   \
-        com.docker.hub.ubuntu-nodejs.vcs-url=${VCS_URL}                         \
-        com.docker.hub.ubuntu-nodejs.vcs-ref=${VCS_REF}                         \
-        com.docker.hub.ubuntu-nodejs.dockerfile.version=${VERSION}              \
-        com.docker.hub.ubuntu-nodejs.license="MIT"                              \
-        com.docker.hub.ubuntu-nodejs.is-production="true"
+LABEL   ubuntu-nodejs.maintainer.name="Tomas"                       \
+        ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"    \
+        ubuntu-nodejs.description="Dockerized Node.js Server"       \
+        ubuntu-nodejs.build-date=${BUILD_DATE}                      \
+        ubuntu-nodejs.vcs-url=${VCS_URL}                            \
+        ubuntu-nodejs.vcs-ref=${VCS_REF}                            \
+        ubuntu-nodejs.dockerfile.version=${VERSION}                 \
+        ubuntu-nodejs.license="MIT"                                 \
+        ubuntu-nodejs.is-production="true"
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
-    NODE_VERSION=${NODE_VERSION:-7.4.0}              \
+    NODE_VERSION=${NODE_VERSION:-7.10.0}             \
     SVC_USER=${SVC_USER:-node}
 
 ##  Create the node.js system user
@@ -42,7 +42,7 @@ RUN                                 \
                 --shell /bin/bash   \
                   "${SVC_USER}"     \
 \
-##  GPG keys listed at https://github.com/nodejs/node   \ 
+##  GPG keys listed at https://github.com/nodejs/node#release-team  \ 
 ##  --------------------------------------------------------------------------------  ## \ 
  && set -ex                                         \
  && for key in                                      \
@@ -65,14 +65,13 @@ RUN                                 \
  && apt-get -y install              \
             --no-install-recommends \
             curl                    \
-            git                     \
             mc                      \
             wget                    \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
  && printf "\n\tDEPLOYED: \t TOOLS \n" \
 \
-##  Node.js Setup   \
+##  Node.js Setup                 */\ 
 ##  --------------------------------------------------------------------------------  ##        \ 
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
@@ -88,5 +87,6 @@ RUN                                 \
 #USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-#ENTRYPOINT ["node"];
 #CMD ["--print"];
+
+#ENTRYPOINT ["node"];

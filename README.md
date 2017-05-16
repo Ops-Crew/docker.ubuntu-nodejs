@@ -6,17 +6,18 @@
 
 --------
 
-#### Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled. ####
+Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled.
 
 --------
 
 ### Packages Versions ###
 
  Package | Version  | Tag
----------|----------|-----
- Container | 0.0.2 | dev
+:--------|:--------:|:---:
+ Container | 0.0.4 | x64
+ Release | Stable | x64
  Linux   | 4.4.0-45 | generic
- Node.js | 7.4.0 | x64
+ Node.js | 7.10.0 | latest
 
 ### Build and Deploy ###
 --------
@@ -24,10 +25,8 @@
 #### Setup
 
 ```bash
-
 docker pull tbaltrushaitis/ubuntu-nodejs
-docker pull tbaltrushaitis/ubuntu-nodejs:latest
-docker pull tbaltrushaitis/ubuntu-nodejs:v7.4.0
+    or
 docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
 ```
 
@@ -49,7 +48,7 @@ docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
 
 ### Useful Info ###
 
- - [Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
+ - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
  - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
  - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
- - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
+ - [Markdown Howto](https://bitbucket.org/tutorials/markdowndemo)
