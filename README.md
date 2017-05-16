@@ -6,7 +6,7 @@
 
 --------
 
-#### Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled. ####
+Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled.
 
 --------
 
@@ -26,9 +26,8 @@
 
 ```bash
 docker pull tbaltrushaitis/ubuntu-nodejs
-docker pull tbaltrushaitis/ubuntu-nodejs:latest
+    or
 docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
-docker pull tbaltrushaitis/ubuntu-nodejs:v7.10.0
 ```
 
 #### Configuration
