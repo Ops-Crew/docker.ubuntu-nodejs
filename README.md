@@ -2,11 +2,15 @@
 
 ![Ubuntu Logo](https://raw.githubusercontent.com/docker-library/docs/01c12653951b2fe592c1f93a13b4e289ada0e3a1/ubuntu/logo.png)
 
-`ubuntu-nodejs`
+`ubuntu` `nodejs` `ubuntu-nodejs` `nodejs-dockerized`
 
 --------
 
 Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled.
+
+--------
+
+[![dockeri.co](http://dockeri.co/image/tbaltrushaitis/ubuntu-nodejs)]
 
 --------
 
@@ -26,7 +30,9 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 
 ```bash
 docker pull tbaltrushaitis/ubuntu-nodejs
-    or
+```
+or
+```
 docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
 ```
 
