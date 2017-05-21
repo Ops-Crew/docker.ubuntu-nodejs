@@ -10,7 +10,7 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 
 --------
 
-[![dockeri.co](http://dockeri.co/image/tbaltrushaitis/ubuntu-nodejs)]
+![dockeri.co](http://dockeri.co/image/tbaltrushaitis/ubuntu-nodejs)
 
 --------
 
