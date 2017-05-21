@@ -15,15 +15,15 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL   com.docker.hub.ubuntu-nodejs.maintainer.name="Tomas"                    \
-        com.docker.hub.ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com" \
-        com.docker.hub.ubuntu-nodejs.description="Dockerized Node.js Server"    \
-        com.docker.hub.ubuntu-nodejs.build-date=${BUILD_DATE}                   \
-        com.docker.hub.ubuntu-nodejs.vcs-url=${VCS_URL}                         \
-        com.docker.hub.ubuntu-nodejs.vcs-ref=${VCS_REF}                         \
-        com.docker.hub.ubuntu-nodejs.dockerfile.version=${VERSION}              \
-        com.docker.hub.ubuntu-nodejs.license="MIT"                              \
-        com.docker.hub.ubuntu-nodejs.is-production="true"
+LABEL   ubuntu-nodejs.maintainer.name="Tomas"                       \
+        ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"    \
+        ubuntu-nodejs.description="Dockerized Node.js Server"       \
+        ubuntu-nodejs.build-date=${BUILD_DATE}                      \
+        ubuntu-nodejs.vcs-url=${VCS_URL}                            \
+        ubuntu-nodejs.vcs-ref=${VCS_REF}                            \
+        ubuntu-nodejs.dockerfile.version=${VERSION}                 \
+        ubuntu-nodejs.license="MIT"                                 \
+        ubuntu-nodejs.is-production="true"
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
