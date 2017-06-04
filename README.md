@@ -14,10 +14,11 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 
  Package | Version  | Tag | Info
 :--------|:--------:|:---:|:----:
- Container | 0.0.4 | x64 | |
+ Container | 0.0.5 | x64 | |
  Release | Stable | x64 | |
- Linux   | 4.4.0-45 | generic | |
- Node.js | 7.10.0 | latest | [![Node.js v7.10.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.10.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.10.0 "")
+ Linux   | 4.4.0-78 | generic | amd64 |
+ Node.js | 8.0.0 | latest | [![Node.js v8.0.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.0.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.0.0 "")
+ Node.js | 7.10.0 | v7.10.0 | [![Node.js v7.10.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.10.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.10.0 "")
  Node.js | 7.4.0 | v7.4.0 | [![Node.js v7.4.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.4.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.4.0 "")
  Node.js | 6.9.1 | v6.9.1 | [![Node.js v6.9.1](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v6.9.1.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v6.9.1 "")
 
@@ -28,8 +29,8 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 docker pull tbaltrushaitis/ubuntu-nodejs
 ```
 or
-```
-docker pull tbaltrushaitis/ubuntu-nodejs:v6.9.1
+```bash
+docker pull tbaltrushaitis/ubuntu-nodejs:v7.10.0
 ```
 
 --------
