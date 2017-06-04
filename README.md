@@ -29,7 +29,7 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 docker pull tbaltrushaitis/ubuntu-nodejs
 ```
 or
-```
+```bash
 docker pull tbaltrushaitis/ubuntu-nodejs:v7.10.0
 ```
 
