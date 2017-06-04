@@ -27,8 +27,8 @@ LABEL   ubuntu-nodejs.maintainer.name="Tomas"                       \
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
-ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info} \
-    NODE_VERSION=${NODE_VERSION:-7.10.0}             \
+ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}    \
+    NODE_VERSION=${NODE_VERSION:-8.0.0}                 \
     SVC_USER=${SVC_USER:-node}
 
 ##  Create the node.js system user
@@ -89,4 +89,4 @@ RUN                                 \
 ## Set /usr/bin/node as the Dockerized entry-point Application
 #CMD ["--print"];
 
-#ENTRYPOINT ["node"];
+ENTRYPOINT ["/usr/bin/node"];
