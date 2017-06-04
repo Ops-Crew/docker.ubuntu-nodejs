@@ -22,6 +22,7 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
  Node.js | 7.4.0 | v7.4.0 | [![Node.js v7.4.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.4.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.4.0 "")
  Node.js | 6.9.1 | v6.9.1 | [![Node.js v6.9.1](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v6.9.1.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v6.9.1 "")
 
+--------
 
 #### Setup
 
@@ -39,9 +40,6 @@ docker pull tbaltrushaitis/ubuntu-nodejs:v7.10.0
 
 ##### DevTeam #####
   + @tbaltrushaitis
-
-##### Contributors #####
-  - N/A
 
 --------
 
