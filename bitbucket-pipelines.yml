@@ -18,3 +18,9 @@ pipelines:
           - node -v
           - npm -v
           - #git clone
+          - printf "BITBUCKET_BRANCH \t = \t ${BITBUCKET_BRANCH}\n"
+          - printf "BITBUCKET_CLONE_DIR \t = \t ${BITBUCKET_CLONE_DIR}\n"
+          - printf "BITBUCKET_COMMIT \t = \t ${BITBUCKET_COMMIT}\n"
+          - printf "BITBUCKET_REPO_OWNER \t = \t ${BITBUCKET_REPO_OWNER}\n"
+          - printf "BITBUCKET_REPO_SLUG \t = \t ${BITBUCKET_REPO_SLUG}\n"
+          - printf "BITBUCKET_TAG \t = \t ${BITBUCKET_TAG}\n"
