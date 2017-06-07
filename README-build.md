@@ -10,27 +10,27 @@
 
 #### Build from Dockerfile tagged with $TAG ####
 
-```
-docker build -f Dockerfile --no-cache --force-rm -t tbaltrushaitis/ubuntu-nodejs:7.4.0 .
+```bash
+$ docker build -f Dockerfile --no-cache --force-rm -t tbaltrushaitis/ubuntu-nodejs:8.0.0 .
 ```
 
-```
-HUB_USER=tbaltrushaitis
-HUB_REPO=ubuntu-nodejs
-NODE_VERSION=7.4.0
+```bash
+$ HUB_USER=tbaltrushaitis
+$ HUB_REPO=ubuntu-nodejs
+$ NODE_VERSION=8.0.0
 
-HUB_IMAGE=${HUB_USER}/${HUB_REPO}
-TAG="v${NODE_VERSION}"
+$ HUB_IMAGE=${HUB_USER}/${HUB_REPO}
+$ TAG="v${NODE_VERSION}"
 
-docker build -f Dockerfile --no-cache --force-rm -t ${HUB_IMAGE}:${TAG} .
-docker build -f Dockerfile --force-rm -t ${HUB_IMAGE}:${TAG} .
+$ docker build -f Dockerfile --no-cache --force-rm -t ${HUB_IMAGE}:${TAG} .
+$ docker build -f Dockerfile --force-rm -t ${HUB_IMAGE}:${TAG} .
 ```
 
 #### Remove Unused Images ####
 
-```
-IMAGES_LIST=$(docker images -a | grep "<none>" | awk '{print $3}')
-docker rmi -f ${IMAGES_LIST}
+```bash
+$ IMAGES_LIST=$(docker images -a | grep "<none>" | awk '{print $3}')
+$ docker rmi -f ${IMAGES_LIST}
 ```
 
 --------
@@ -39,7 +39,6 @@ docker rmi -f ${IMAGES_LIST}
 
 ##### Development team #####
   + @tbaltrushaitis
-  + @soldat79_001
 
 ##### Contributors list #####
   + @tbaltrushaitis
@@ -53,3 +52,5 @@ docker rmi -f ${IMAGES_LIST}
  - [Linking containers](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks.md)
  - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
  - [Creating an Automated Build](https://docs.docker.com/docker-hub/builds/)
+
+--------
