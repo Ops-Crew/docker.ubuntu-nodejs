@@ -7,6 +7,10 @@ pipelines:
     - step:
         name: "[Step_01] RUN ./bin/build.sh"
         deployment: test
+        services:
+          - docker
+        caches:
+          - docker # adds docker layer caching
         script:
           - chmod a+x ./bin/*.sh
           - ./bin/build.sh i
@@ -38,3 +42,11 @@ pipelines:
           - echo "[BITBUCKET_TAG] = [${BITBUCKET_TAG}]"
           - echo "[BITBUCKET_BUILD_NUMBER] = [${BITBUCKET_BUILD_NUMBER}]"
           - echo "[CI] = [${CI}]"
+
+definitions:
+  services:
+    docker:
+      memory: 2048
+
+options:
+  docker: true
