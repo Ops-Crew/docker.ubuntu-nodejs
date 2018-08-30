@@ -40,10 +40,13 @@ RUN \
 ##  --------------------------------------------------------------------------------  ## \
   groupadd  --system              \
             --force               \
+            --gid 1000            \
               "${SVC_USER}"       \
  && useradd   --system            \
+              --uid 1000          \
               --gid "${SVC_USER}" \
               --shell /bin/bash   \
+              --create-home       \
                 "${SVC_USER}"     \
 \
 ##  GPG keys listed at https://github.com/nodejs/node#release-team  \
@@ -115,6 +118,6 @@ RUN \
 # USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-ENTRYPOINT ["/usr/local/bin/node"];
+# ENTRYPOINT ["/usr/local/bin/node"];
 
-CMD ["-v"];
+CMD ["node"];
