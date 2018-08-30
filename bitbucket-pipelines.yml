@@ -5,13 +5,13 @@ image: tbaltrushaitis/ubuntu-nodejs
 pipelines:
   default:
     - step:
-        name: [Step_01] RUN ./bin/build.sh
+        name: "[Step_01] RUN ./bin/build.sh"
         deployment: staging
         script:
           - chmod a+x ./bin/*.sh
           - ./bin/build.sh i
     - step:
-        name: [Step_02] Test
+        name: "[Step_02] Test"
         deployment: test
         script:
           - printf "\n\n\nHi! I am OS:\n$(uname -a)\n\n\n"
@@ -27,7 +27,7 @@ pipelines:
           - node -v
           - npm -v
     - step:
-        name: [Step_03] Show ENV Vars
+        name: "[Step_03] Show ENV Vars"
         script:
           - echo "[Step_02] Script runs on the [${BITBUCKET_BRANCH}] branch."
           - pwd
