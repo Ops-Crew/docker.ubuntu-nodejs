@@ -28,12 +28,16 @@ LABEL ubuntu-nodejs.maintainer.name="Tomas"                     \
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}  \
-    NODE_VERSION=${NODE_VERSION:-8.11.4}               \
+    NODE_VERSION=${NODE_VERSION:-8.11.4}              \
     SVC_USER=${SVC_USER:-node}
 
-##  Create the node.js system user
 ##  --------------------------------------------------------------------------------  ##
-RUN                               \
+##  Execute prerequisites in ONE RUN command
+##  --------------------------------------------------------------------------------  ##
+RUN \
+\
+##  Create the node.js system user \
+##  --------------------------------------------------------------------------------  ## \
   groupadd  --system              \
             --force               \
               "${SVC_USER}"       \
@@ -59,20 +63,33 @@ RUN                               \
           --recv-keys "$key";                     \
     done                                          \
 \
-##  Tools Setup                     \
+##  Updates Setup                   \
 ##  --------------------------------------------------------------------------------  ## \
  && apt-get -q update               \
- && apt-get -y install              \
+            --assume-yes            \
+ && printf "\n\tDEPLOYED: \t UPDATES \n" \
+\
+##  Tools Setup                     \
+##  --------------------------------------------------------------------------------  ## \
+ && apt-get install                 \
+            --assume-yes            \
             --no-install-recommends \
             curl                    \
             mc                      \
             wget                    \
- && apt-get clean                   \
- && rm -rf /var/lib/apt/lists/*     \
+            git                     \
+            htop                    \
  && printf "\n\tDEPLOYED: \t TOOLS \n" \
 \
+##  Cleanup                         \
+##  --------------------------------------------------------------------------------  ## \
+ && apt-get autoremove              \
+ && apt-get clean                   \
+ && rm -rf /var/lib/apt/lists/*     \
+ && printf "\n\tCLEANED: \t APT CACHES \n" \
+\
 ##  Node.js Setup                 */\
-##  --------------------------------------------------------------------------------  ##        \
+##  --------------------------------------------------------------------------------  ## \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
  && curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc"                     \
  && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc                            \
@@ -80,13 +97,22 @@ RUN                               \
  && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1          \
  && rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt               \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
- && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) \n\n"
+ && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) \n\n"                                         \
+
+##  System Enhacements Pack        \
+##  --------------------------------------------------------------------------------  ## \
+&& cd /tmp/                        \
+&& APP_NAME=bash-files \
+&& git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
+&& cd ${APP_NAME}                  \
+&& make                            \
+&& cd ..                           \
+&& rm -rf ${APP_NAME}              \
+&& printf "\n\tDEPLOYED: \t ENHANCEMENTS \n"
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
-#USER ${SVC_USER}
+USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-#CMD ["--print"];
-
 ENTRYPOINT ["/usr/bin/node"];
