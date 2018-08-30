@@ -12,11 +12,11 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
 
 ### Packages Versions ###
 
- Package | Version  | Tag | Info
-:--------|:--------:|:---:|:----:
- Container | 0.0.6 | x64 | |
- Release | Stable | x64 | |
- Linux   | 4.4.0-78 | generic | amd64 |
+ Package | Version  | Tag | Info |
+:--------|:--------:|:---:|:----:|
+ Container | 0.0.6 | x64 |
+ Release | Stable | x64 |
+ Linux   | 4.4.0-78 | generic | amd64
  Node.js | 8.11.4 | v8.11.4 | [![Node.js v8.11.4](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.11.4.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.11.4 "")
  Node.js | 8.0.0 | latest | [![Node.js v8.0.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.0.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.0.0 "")
  Node.js | 7.10.0 | v7.10.0 | [![Node.js v7.10.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.10.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.10.0 "")
