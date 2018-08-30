@@ -1,4 +1,6 @@
-# Docker Image [![](https://images.microbadger.com/badges/version/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs) [![](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs)
+# Docker Image [![License Badge](https://images.microbadger.com/badges/license/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs "")
+## Ubuntu with Node.js preinstalled
+ [![](https://images.microbadger.com/badges/version/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs) [![](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs)
 
 ![Ubuntu Logo](https://raw.githubusercontent.com/docker-library/docs/01c12653951b2fe592c1f93a13b4e289ada0e3a1/ubuntu/logo.png)
 
@@ -6,15 +8,15 @@
 
 --------
 
-### Build ###
+### Usage ###
 
 #### Build from Dockerfile tagged with $TAG ####
 
-```bash
+```shell
 $ docker build -f Dockerfile --no-cache --force-rm -t tbaltrushaitis/ubuntu-nodejs:8.0.0 .
 ```
 
-```bash
+```shell
 $ HUB_USER=tbaltrushaitis
 $ HUB_REPO=ubuntu-nodejs
 $ NODE_VERSION=8.0.0
@@ -28,7 +30,7 @@ $ docker build -f Dockerfile --force-rm -t ${HUB_IMAGE}:${TAG} .
 
 #### Remove Unused Images ####
 
-```bash
+```shell
 $ IMAGES_LIST=$(docker images -a | grep "<none>" | awk '{print $3}')
 $ docker rmi -f ${IMAGES_LIST}
 ```
@@ -36,13 +38,7 @@ $ docker rmi -f ${IMAGES_LIST}
 --------
 
 ### Authors and Contributors ###
-
-##### Development team #####
-  + @tbaltrushaitis
-
-##### Contributors list #####
-  + @tbaltrushaitis
-  + @maybeyou?
+[![Contributors](https://img.shields.io/github/contributors/tbaltrushaitis/ubuntu-nodejs.svg)](https://github.com/tbaltrushaitis/ubuntu-nodejs/graphs/contributors)
 
 --------
 
