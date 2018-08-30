@@ -19,7 +19,6 @@ pipelines:
         deployment: staging
         script:
           - printf "\n\n\nHi! I am OS:\n$(uname -a)\n\n\n"
-          - ii
           - free -m
           - lscpu
           - whoami
