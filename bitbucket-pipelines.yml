@@ -5,8 +5,17 @@ image: tbaltrushaitis/ubuntu-nodejs
 pipelines:
   default:
     - step:
+        name: [Step_01] RUN ./bin/build.sh
+        deployment: staging
+        script:
+          - chmod a+x ./bin/*.sh
+          - ./bin/build.sh i
+    - step:
+        name: [Step_02] Test
+        deployment: test
         script:
           - printf "\n\n\nHi! I am OS:\n$(uname -a)\n\n\n"
+          - ii
           - free -m
           - lscpu
           - whoami
@@ -17,10 +26,15 @@ pipelines:
           - ping 8.8.8.8 -c 4
           - node -v
           - npm -v
-          - #git clone
-          - printf "BITBUCKET_BRANCH \t = \t ${BITBUCKET_BRANCH}\n"
-          - printf "BITBUCKET_CLONE_DIR \t = \t ${BITBUCKET_CLONE_DIR}\n"
-          - printf "BITBUCKET_COMMIT \t = \t ${BITBUCKET_COMMIT}\n"
-          - printf "BITBUCKET_REPO_OWNER \t = \t ${BITBUCKET_REPO_OWNER}\n"
-          - printf "BITBUCKET_REPO_SLUG \t = \t ${BITBUCKET_REPO_SLUG}\n"
-          - printf "BITBUCKET_TAG \t = \t ${BITBUCKET_TAG}\n"
+    - step:
+        name: [Step_03] Show ENV Vars
+        script:
+          - echo "[Step_02] Script runs on the [${BITBUCKET_BRANCH}] branch."
+          - pwd
+          - echo "[BITBUCKET_CLONE_DIR] = [${BITBUCKET_CLONE_DIR}]"
+          - echo "[BITBUCKET_COMMIT] = [${BITBUCKET_COMMIT}]"
+          - echo "[BITBUCKET_REPO_OWNER] = [${BITBUCKET_REPO_OWNER}]"
+          - echo "[BITBUCKET_REPO_SLUG] = [${BITBUCKET_REPO_SLUG}]"
+          - echo "[BITBUCKET_TAG] = [${BITBUCKET_TAG}]"
+          - echo "[BITBUCKET_BUILD_NUMBER] = [${BITBUCKET_BUILD_NUMBER}]"
+          - echo "[CI] = [${CI}]"

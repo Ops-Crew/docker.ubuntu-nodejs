@@ -15,15 +15,15 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL ubuntu-nodejs.maintainer.name="Tomas"                     \
-      ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"  \
+LABEL ubuntu-nodejs.build-date=${BUILD_DATE}                    \
       ubuntu-nodejs.description="Dockerized Node.js Server"     \
-      ubuntu-nodejs.build-date=${BUILD_DATE}                    \
-      ubuntu-nodejs.vcs-url=${VCS_URL}                          \
-      ubuntu-nodejs.vcs-ref=${VCS_REF}                          \
-      ubuntu-nodejs.dockerfile.version=${VERSION}               \
+      ubuntu-nodejs.dockerfile.version=${VERSION:-0.0.6}        \
+      ubuntu-nodejs.is-production="true"                        \
       ubuntu-nodejs.license="MIT"                               \
-      ubuntu-nodejs.is-production="true"
+      ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"  \
+      ubuntu-nodejs.maintainer.name="Baltrushaitis Tomas"       \
+      ubuntu-nodejs.vcs-ref=${VCS_REF}                          \
+      ubuntu-nodejs.vcs-url=${VCS_URL}
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
@@ -102,7 +102,7 @@ RUN \
 ##  System Enhacements Pack        \
 ##  --------------------------------------------------------------------------------  ## \
 && cd /tmp/                        \
-&& APP_NAME=bash-files \
+&& APP_NAME=bash-files             \
 && git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
 && cd ${APP_NAME}                  \
 && make                            \
@@ -112,7 +112,9 @@ RUN \
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
-USER ${SVC_USER}
+# USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-ENTRYPOINT ["/usr/bin/node"];
+ENTRYPOINT ["/usr/local/bin/node"];
+
+CMD ["-v"];

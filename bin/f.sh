@@ -8,12 +8,12 @@
 ##                                    LOGGERS                                 ##
 ##  ------------------------------------------------------------------------  ##
 function log () {
-  printf "$(date +"%Y%m%d%H%M%S")\t%s\n" "$@";
+  printf "$(date +"%Y%m%d%H%M%S")\t%b\n" "$@";
 }
 
 
 function info () {
-  echo -en "\n${BBlue}INFO:${NC}" "${@}";
+  printf "\n${BBlue}INFO:${NC}\t%b\n" "${@}";
 }
 
 

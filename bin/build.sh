@@ -58,18 +58,17 @@ HUB_IMAGE=${HUB_USER}/${HUB_REPO}
 printf "\n----------------------------  ${DATE}  ---------------------------\n";
 
 function dockerBuild () {
-    printf "\t$0 params: \t [$@]\n";
+    log "\t$0 params: \t [$@]";
     Image=$1;
     if [ "$1" == "" ]; then
         Image=${HUB_IMAGE}
     fi
-    printf "\tBuild Image = \t [${Image}]\n\n";
+    log "\tBuild Image = \t [${Image}]\n\n";
 
     ##  Build Docker image
     COM_BUILD_IMAGE="docker -D                  \
                             --log-level=debug   \
         build                                   \
-          --quiet                               \
           --disable-content-trust=true          \
           --build-arg BUILD_DATE=${BUILD_DATE}  \
           --build-arg VERSION=${NODE_VERSION}   \
@@ -79,13 +78,14 @@ function dockerBuild () {
           -t ${Image}:${TAG}                    \
           . "
 
-    printf "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]\n";
+    info "\tCOM_BUILD_IMAGE = [${COM_BUILD_IMAGE}]";
     BUILD_IMAGE_ID=$(${COM_BUILD_IMAGE})
     echo -e "\t${BWhite}BUILD_IMAGE_ID${NC} = ${BUILD_IMAGE_ID}\n";
     echo ${BUILD_IMAGE_ID} > "BUILD_IMAGE.ID"
 }
-#      --pull                                \
-#      --force-rm                            \
+#       --quiet                               \
+#       --pull                                \
+#       --force-rm                            \
 
 
 ##  ------------------------------------------------------------------------  ##
@@ -124,4 +124,3 @@ esac
 printf "\n\n[LOG]\tALL DONE\n"
 
 exit $RETVAL
-
