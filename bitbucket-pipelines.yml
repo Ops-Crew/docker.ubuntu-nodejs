@@ -1,18 +1,18 @@
 # Only use spaces to indent .yml configuration.
 # -----
-image: tbaltrushaitis/ubuntu-nodejs
+# image: tbaltrushaitis/ubuntu-nodejs
 
 pipelines:
   default:
     - step:
         name: "[Step_01] RUN ./bin/build.sh"
-        deployment: staging
+        deployment: test
         script:
           - chmod a+x ./bin/*.sh
           - ./bin/build.sh i
     - step:
         name: "[Step_02] Test"
-        deployment: test
+        deployment: staging
         script:
           - printf "\n\n\nHi! I am OS:\n$(uname -a)\n\n\n"
           - ii
