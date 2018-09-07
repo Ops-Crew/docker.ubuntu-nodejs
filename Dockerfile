@@ -17,7 +17,7 @@ ARG VERSION
 ##  --------------------------------------------------------------------------------  ##
 LABEL ubuntu-nodejs.build-date=${BUILD_DATE}                    \
       ubuntu-nodejs.description="Dockerized Node.js Server"     \
-      ubuntu-nodejs.dockerfile.version=${VERSION:-0.0.6}        \
+      ubuntu-nodejs.dockerfile.version=${VERSION:-0.0.7}        \
       ubuntu-nodejs.is-production="true"                        \
       ubuntu-nodejs.license="MIT"                               \
       ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"  \
@@ -28,7 +28,7 @@ LABEL ubuntu-nodejs.build-date=${BUILD_DATE}                    \
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}  \
-    NODE_VERSION=${NODE_VERSION:-8.11.4}              \
+    NODE_VERSION=${NODE_VERSION:-9.9.0}               \
     SVC_USER=${SVC_USER:-node}
 
 ##  --------------------------------------------------------------------------------  ##
@@ -112,7 +112,7 @@ RUN \
  && tar -xJf "node-v${NODE_VERSION}-linux-${ARCH}.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
  && rm "node-v${NODE_VERSION}-linux-${ARCH}.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt           \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
- && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) for linux-${ARCH} \n\n"                             \
+ && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) for linux-${ARCH} \n\n"                       \
 \
 ##  System Enhacements Pack        \
 ##  --------------------------------------------------------------------------------  ## \
