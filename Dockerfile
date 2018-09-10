@@ -15,7 +15,7 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL org.label-schema.schema-version = "1.0"                   \
+LABEL org.label-schema.schema-version="1.0"                     \
       org.label-schema.build-date=${BUILD_DATE}                 \
       org.label-schema.name="Ubuntu + Node.js"                  \
       org.label-schema.description="Dockerized Node.js Server"  \
