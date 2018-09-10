@@ -15,15 +15,17 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL ubuntu-nodejs.build-date=${BUILD_DATE}                    \
-      ubuntu-nodejs.description="Dockerized Node.js Server"     \
-      ubuntu-nodejs.dockerfile.version=${VERSION:-0.0.7}        \
-      ubuntu-nodejs.is-production="true"                        \
-      ubuntu-nodejs.license="MIT"                               \
-      ubuntu-nodejs.maintainer.mail="tbaltrushaitis@gmail.com"  \
-      ubuntu-nodejs.maintainer.name="Baltrushaitis Tomas"       \
-      ubuntu-nodejs.vcs-ref=${VCS_REF}                          \
-      ubuntu-nodejs.vcs-url=${VCS_URL}
+LABEL org.label-schema.schema-version = "1.0"                   \
+      org.label-schema.build-date=${BUILD_DATE}                 \
+      org.label-schema.name="Ubuntu + Node.js"                  \
+      org.label-schema.description="Dockerized Node.js Server"  \
+      org.label-schema.version=${VERSION:-0.0.7}                \
+      org.label-schema.vendor="Baltrushaitis Tomas"             \
+      org.label-schema.vcs-ref=${VCS_REF}                       \
+      org.label-schema.vcs-url=${VCS_URL}                       \
+      org.label-schema.is-production="true"                     \
+      org.label-schema.license="MIT"                            \
+      org.label-schema.maintainer.mail="tbaltrushaitis@gmail.com"
 
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
