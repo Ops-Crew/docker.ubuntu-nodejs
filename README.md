@@ -19,7 +19,7 @@ Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and 
  Container | 0.0.7 |  |
  Release | Stable |  |
  Linux   | 4.4.0-134 | generic |
- Node.js | 9.9.0 | v9.0.0 / latest | [![Node.js v9.9.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v9.9.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v9.9.0 "")
+ Node.js | 9.9.0 | v9.9.0 / latest | [![Node.js v9.9.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v9.9.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v9.9.0 "")
  Node.js | 8.11.4 | v8.11.4 | [![Node.js v8.11.4](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.11.4.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.11.4 "")
  Node.js | 8.0.0 | v8.0.0 | [![Node.js v8.0.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.0.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.0.0 "")
  Node.js | 7.10.0 | v7.10.0 | [![Node.js v7.10.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v7.10.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v7.10.0 "")
