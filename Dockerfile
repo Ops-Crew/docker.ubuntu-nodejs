@@ -40,16 +40,16 @@ RUN \
 \
 ##  Create the node.js system user \
 ##  --------------------------------------------------------------------------------  ## \
-  groupadd  --system              \
-            --force               \
-            --gid 1000            \
-              "${SVC_USER}"       \
- && useradd   --system            \
-              --uid 1000          \
-              --gid "${SVC_USER}" \
-              --shell /bin/bash   \
-              --create-home       \
-                "${SVC_USER}"     \
+  groupadd  --system            \
+            --force             \
+            --gid 1000          \
+            "${SVC_USER}"       \
+ && useradd --system            \
+            --uid 1000          \
+            --gid "${SVC_USER}" \
+            --shell /bin/bash   \
+            --create-home       \
+            "${SVC_USER}"       \
 \
 ##  GPG keys listed at https://github.com/nodejs/node#release-team  \
 ##  --------------------------------------------------------------------------------  ## \
