@@ -15,7 +15,7 @@ ARG VERSION
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
-LABEL org.label-schema.schema-version = "1.0"                   \
+LABEL org.label-schema.schema-version="1.0"                     \
       org.label-schema.build-date=${BUILD_DATE}                 \
       org.label-schema.name="Ubuntu + Node.js"                  \
       org.label-schema.description="Dockerized Node.js Server"  \
@@ -40,16 +40,16 @@ RUN \
 \
 ##  Create the node.js system user \
 ##  --------------------------------------------------------------------------------  ## \
-  groupadd  --system              \
-            --force               \
-            --gid 1000            \
-              "${SVC_USER}"       \
- && useradd   --system            \
-              --uid 1000          \
-              --gid "${SVC_USER}" \
-              --shell /bin/bash   \
-              --create-home       \
-                "${SVC_USER}"     \
+  groupadd  --system            \
+            --force             \
+            --gid 1000          \
+            "${SVC_USER}"       \
+ && useradd --system            \
+            --uid 1000          \
+            --gid "${SVC_USER}" \
+            --shell /bin/bash   \
+            --create-home       \
+            "${SVC_USER}"       \
 \
 ##  GPG keys listed at https://github.com/nodejs/node#release-team  \
 ##  --------------------------------------------------------------------------------  ## \
