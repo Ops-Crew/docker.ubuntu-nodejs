@@ -72,7 +72,7 @@ RUN \
 ##  --------------------------------------------------------------------------------  ## \
  && apt-get -q update               \
             --assume-yes            \
- && printf "\n\tDEPLOYED: \t UPDATES \n" \
+ && echo -e "\n\tDEPLOYED: \t UPDATES \n" \
 \
 ##  Tools Setup                     \
 ##  --------------------------------------------------------------------------------  ## \
@@ -84,14 +84,14 @@ RUN \
             wget                    \
             git                     \
             htop                    \
- && printf "\n\tDEPLOYED: \t TOOLS \n" \
+ && echo -e "\n\tDEPLOYED: \t TOOLS \n" \
 \
 ##  Cleanup                         \
 ##  --------------------------------------------------------------------------------  ## \
  && apt-get autoremove              \
  && apt-get clean                   \
  && rm -rf /var/lib/apt/lists/*     \
- && printf "\n\tCLEANED: \t APT CACHES \n" \
+ && echo -e "\n\tCLEANED: \t APT CACHES \n" \
 \
 ##  Node.js Setup                 */\
 ##  --------------------------------------------------------------------------------  ## \
@@ -112,18 +112,18 @@ RUN \
  && tar -xJf "node-v${NODE_VERSION}-linux-${ARCH}.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
  && rm "node-v${NODE_VERSION}-linux-${ARCH}.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt           \
  && ln -s /usr/local/bin/node /usr/local/bin/nodejs                                             \
- && printf "\n\n\tDEPLOYED: \t Node.js:$(node -v) for linux-${ARCH} \n\n"                       \
+ && echo -e "\n\n\tDEPLOYED: \t Node.js:$(node -v) for linux-${ARCH} \n\n"                      \
 \
-##  System Enhacements Pack        \
+##  System Enhacements Pack         \
 ##  --------------------------------------------------------------------------------  ## \
-&& cd /tmp/                        \
-&& APP_NAME=bash-files             \
-&& git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
-&& cd ${APP_NAME}                  \
-&& make                            \
-&& cd ..                           \
-&& rm -rf ${APP_NAME}              \
-&& printf "\n\tDEPLOYED: \t ENHANCEMENTS \n"
+ && cd /tmp/                        \
+ && APP_NAME=bash-files             \
+ && git clone https://github.com/tbaltrushaitis/${APP_NAME}.git \
+ && cd ${APP_NAME}                  \
+ && make                            \
+ && cd ..                           \
+ && rm -rf ${APP_NAME}              \
+ && echo -e "\n\tDEPLOYED: \t ENHANCEMENTS \n"
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
