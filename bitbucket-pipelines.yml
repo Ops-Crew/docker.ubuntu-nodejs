@@ -5,15 +5,14 @@
 pipelines:
   default:
     - step:
-        name: "[Step_01] RUN ./bin/build.sh"
+        name: "[Step_01] BUILD"
         deployment: test
         services:
           - docker
         caches:
           - docker # adds docker layer caching
         script:
-          - chmod a+x ./bin/*.sh
-          - ./bin/build.sh i
+          - make build
     - step:
         name: "[Step_02] Test"
         deployment: staging
