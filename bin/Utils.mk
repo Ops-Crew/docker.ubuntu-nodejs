@@ -19,8 +19,8 @@ state:
 	@ echo "\t APP_LOGO \t = ${APP_LOGO}";
 	@ echo ${BCyan}REPOSITORY:${NC};
 	@ echo "\t APP_BRANCH \t = ${APP_BRANCH}";
-	@ echo "\t REPO_URL \t = ${REPO_URL}";
-	@ echo "\t GIT_COMMIT \t = ${GIT_COMMIT}";
+	@ echo "\t REPO_URL \t = ${VCS_URL}";
+	@ echo "\t GIT_COMMIT \t = ${VCS_REF}";
 	@ echo ${BCyan}ENGINE:${NC};
 	@ echo "\t WD \t\t = ${WD}";
 	@ echo "\t DIR_SRC \t = ${DIR_SRC}";

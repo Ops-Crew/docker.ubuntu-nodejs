@@ -9,9 +9,11 @@ FROM buildpack-deps:jessie
 ##  Build-time metadata as defined at http://label-schema.org
 ##  --------------------------------------------------------------------------------  ##
 ARG BUILD_DATE
-ARG VCS_URL
 ARG VCS_REF
+ARG VCS_URL
 ARG VERSION
+ARG NODE_VERSION
+ARG SVC_USER
 
 ##  Image Labels Metadata
 ##  --------------------------------------------------------------------------------  ##
@@ -19,7 +21,7 @@ LABEL org.label-schema.schema-version="1.0"                     \
       org.label-schema.build-date=${BUILD_DATE}                 \
       org.label-schema.name="Ubuntu + Node.js"                  \
       org.label-schema.description="Dockerized Node.js Server"  \
-      org.label-schema.version=${VERSION:-0.0.7}                \
+      org.label-schema.version=${VERSION:-latest}                \
       org.label-schema.vendor="Baltrushaitis Tomas"             \
       org.label-schema.vcs-ref=${VCS_REF}                       \
       org.label-schema.vcs-url=${VCS_URL}                       \
@@ -129,9 +131,9 @@ RUN \
 
 ##  Communication
 ##  --------------------------------------------------------------------------------  ##
-# USER ${SVC_USER}
+USER ${SVC_USER}
 
 ## Set /usr/bin/node as the Dockerized entry-point Application
-# ENTRYPOINT ["/usr/local/bin/node"];
+ENTRYPOINT ["/usr/local/bin/node"];
 
-CMD ["node"];
+# CMD ["node", "-v"];

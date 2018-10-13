@@ -1,3 +1,7 @@
+# 0.0.8 #
+
+- Fixed bug with passing parameters to `docker build` command
+
 # 0.0.7 #
 
 - Added Makefile scenario to operate on docker images
@@ -30,4 +34,4 @@
 
 # Initial version #
 
-- Create Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled.
+- Created Docker Container with [Ubuntu OS](https://www.ubuntu.com "Ubuntu official") and [Node.js](https://nodejs.org "Node Foundation") environment preinstalled.
