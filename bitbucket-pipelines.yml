@@ -9,8 +9,8 @@ pipelines:
         deployment: test
         services:
           - docker
-        caches:
-          - docker # adds docker layer caching
+        # caches:
+        #   - docker # adds docker layer caching
         script:
           - make build
     - step:
@@ -46,6 +46,8 @@ definitions:
   services:
     docker:
       memory: 2048
+  caches:
+    apt: /var/cache/apt/
 
 options:
   docker: true

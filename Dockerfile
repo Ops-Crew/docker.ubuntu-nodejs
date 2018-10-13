@@ -136,4 +136,4 @@ USER ${SVC_USER}
 ## Set /usr/bin/node as the Dockerized entry-point Application
 ENTRYPOINT ["/usr/local/bin/node"];
 
-CMD ["node", "-v"];
+# CMD ["node", "-v"];

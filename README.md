@@ -1,5 +1,4 @@
-[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version)
-[![License Badge](https://images.microbadger.com/badges/license/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs "")
+[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg?style=plastic)](https://github.com/conventional-changelog/standard-version) [![License Badge](https://images.microbadger.com/badges/license/tbaltrushaitis/ubuntu-nodejs.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs "") [![Contributors List](https://img.shields.io/github/contributors/tbaltrushaitis/mp3web.svg)](https://github.com/tbaltrushaitis/mp3web/graphs/contributors)
 
 # Docker Image #
 
@@ -44,12 +43,6 @@ $ sudo docker pull tbaltrushaitis/ubuntu-nodejs:v8.0.0
 
 ---
 
-### Contributors ###
-
-[![Contributors List](https://img.shields.io/github/contributors/tbaltrushaitis/mp3web.svg)](https://github.com/tbaltrushaitis/mp3web/graphs/contributors)
-
----
-
 ### Useful Info ###
 
  - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
@@ -59,3 +52,5 @@ $ sudo docker pull tbaltrushaitis/ubuntu-nodejs:v8.0.0
  - [Cross-host linking containers](https://docs.docker.com/engine/admin/ambassador_pattern_linking.md)
 
 ---
+
+:scorpius:
