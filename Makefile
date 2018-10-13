@@ -13,9 +13,6 @@ include ./envs/.env*
 ##                              PREREQUISITES                                 ##
 ##  ------------------------------------------------------------------------  ##
 
-APP_SLOG := "UBUNTU + NODE.JS"
-APP_LOGO := ./assets/BANNER
-
 # Image can be overidden with env vars
 DOCKER_IMAGE ?= $(HUB_USER)/$(HUB_REPO)
 
@@ -56,6 +53,9 @@ build: docker_build output
 # Build and push Docker image
 release: docker_build docker_push output
 
+# Push image to docker hub as 'latest'
+release_latest: docker_push_latest output
+
 # Find out if the working directory is clean
 GIT_NOT_CLEAN_CHECK = $(shell git status --porcelain)
 ifneq (x$(GIT_NOT_CLEAN_CHECK), x)
@@ -89,7 +89,7 @@ endif
 
 ##  ------------------------------------------------------------------------  ##
 
-test: output banner
+test: output banner state
 
 docker_build:
 	# Build Docker image
@@ -99,19 +99,24 @@ docker_build:
 			--disable-content-trust=true         \
 		  --build-arg BUILD_DATE=$(BUILD_DATE) \
 		  --build-arg VERSION=$(CODE_VERSION)  \
+			--build-arg VCS_REF=$(VCS_REF)       \
 		  --build-arg VCS_URL=$(VCS_URL)       \
-		  --build-arg VCS_REF=$(VCS_REF)       \
+		  --build-arg NODE_VERSION=$(NODE_VERSION) \
+		  --build-arg SVC_USER=$(SVC_USER)     \
 			-f Dockerfile                        \
 			-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 docker_push:
+	# Push to DockerHub
+	sudo docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
+
+docker_push_latest:
 	# Tag image as latest
 	sudo docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(DOCKER_IMAGE):latest
 
 	# Push to DockerHub
-	sudo docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
 	sudo docker push $(DOCKER_IMAGE):latest
 
 output:
-	sudo docker inspect $(DOCKER_IMAGE):$(DOCKER_TAG)
-	@echo ${BYellow}Docker Image${NC}: ${BPurple}$(DOCKER_IMAGE):$(DOCKER_TAG)${NC}
+	@ echo ${BYellow}Docker Image${NC}: ${BPurple}$(DOCKER_IMAGE):$(DOCKER_TAG)${NC}
+	@ sudo docker inspect $(DOCKER_IMAGE):$(DOCKER_TAG) 2>&1 ;

@@ -9,8 +9,8 @@ pipelines:
         deployment: test
         services:
           - docker
-        caches:
-          - docker # adds docker layer caching
+        # caches:
+        #   - docker # adds docker layer caching
         script:
           - make build
     - step:
@@ -28,11 +28,11 @@ pipelines:
           - ping 8.8.8.8 -c 4
           - node -v
           - npm -v
+          - printf "\n\n\nBye! I am OS:\n$(uname -a)\n\n\n"
     - step:
         name: "[Step_03] Show ENV Vars"
         script:
-          - echo "[Step_02] Script runs on the [${BITBUCKET_BRANCH}] branch."
-          - pwd
+          - echo "Script runs on the [BITBUCKET_BRANCH] = [${BITBUCKET_BRANCH}]"
           - echo "[BITBUCKET_CLONE_DIR] = [${BITBUCKET_CLONE_DIR}]"
           - echo "[BITBUCKET_COMMIT] = [${BITBUCKET_COMMIT}]"
           - echo "[BITBUCKET_REPO_OWNER] = [${BITBUCKET_REPO_OWNER}]"
@@ -40,11 +40,14 @@ pipelines:
           - echo "[BITBUCKET_TAG] = [${BITBUCKET_TAG}]"
           - echo "[BITBUCKET_BUILD_NUMBER] = [${BITBUCKET_BUILD_NUMBER}]"
           - echo "[CI] = [${CI}]"
+          - pwd
 
 definitions:
   services:
     docker:
       memory: 2048
+  caches:
+    apt: /var/cache/apt/
 
 options:
   docker: true
