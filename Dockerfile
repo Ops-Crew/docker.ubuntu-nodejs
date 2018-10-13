@@ -21,7 +21,7 @@ LABEL org.label-schema.schema-version="1.0"                     \
       org.label-schema.build-date=${BUILD_DATE}                 \
       org.label-schema.name="Ubuntu + Node.js"                  \
       org.label-schema.description="Dockerized Node.js Server"  \
-      org.label-schema.version=${VERSION:-latest}                \
+      org.label-schema.version=${VERSION:-latest}               \
       org.label-schema.vendor="Baltrushaitis Tomas"             \
       org.label-schema.vcs-ref=${VCS_REF}                       \
       org.label-schema.vcs-url=${VCS_URL}                       \
@@ -32,7 +32,7 @@ LABEL org.label-schema.schema-version="1.0"                     \
 ##  Environment Variables
 ##  --------------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}  \
-    NODE_VERSION=${NODE_VERSION:-9.9.0}               \
+    NODE_VERSION=${NODE_VERSION:-8.12.0}              \
     SVC_USER=${SVC_USER:-node}
 
 ##  --------------------------------------------------------------------------------  ##
