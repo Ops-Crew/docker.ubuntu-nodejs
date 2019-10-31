@@ -18,10 +18,11 @@ Docker Container with [Ubuntu Linux](https://www.ubuntu.com "Ubuntu official") a
 
  Package | Version  | Tag | Image | Docker Pull Command |
 :--------|:--------:|:---:|:-----:|:--------------------|
- Container | 0.0.8 |  | |
+ Container | 0.0.9 |  | |
  Release | Stable |  | |
  Linux | 4.4.0-134 | generic | |
- Node.js | 9.9.0 | v9.9.0 / latest | [![Node.js v9.9.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v9.9.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v9.9.0 "") | docker pull tbaltrushaitis/ubuntu-nodejs:v9.9.0
+ Node.js | 9.11.2 | v9.11.2 / latest | [![Node.js v9.11.2](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v9.11.2.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v9.11.2 "") | docker pull tbaltrushaitis/ubuntu-nodejs:v9.11.2
+ Node.js | 9.9.0 | v9.9.0 | [![Node.js v9.9.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v9.9.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v9.9.0 "") | docker pull tbaltrushaitis/ubuntu-nodejs:v9.9.0
  Node.js | 8.12.0 | v8.12.0 | [![Node.js v8.12.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.12.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.12.0 "")  | docker pull tbaltrushaitis/ubuntu-nodejs:v8.12.0
  Node.js | 8.11.4 | v8.11.4 | [![Node.js v8.11.4](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.11.4.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.11.4 "")  | docker pull tbaltrushaitis/ubuntu-nodejs:v8.11.4
  Node.js | 8.0.0 | v8.0.0 | [![Node.js v8.0.0](https://images.microbadger.com/badges/image/tbaltrushaitis/ubuntu-nodejs:v8.0.0.svg)](https://microbadger.com/images/tbaltrushaitis/ubuntu-nodejs:v8.0.0 "") | docker pull tbaltrushaitis/ubuntu-nodejs:v8.0.0
