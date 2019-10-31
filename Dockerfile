@@ -33,7 +33,7 @@ LABEL org.label-schema.schema-version="1.0"                     \
 ##  Environment Variables
 ##  ------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}  \
-    NODE_VERSION=${NODE_VERSION:-8.12.0}              \
+    NODE_VERSION=${NODE_VERSION:-9.11.2}              \
     SVC_USER=${SVC_USER:-node}
 
 ##  ------------------------------------------------------------------------  ##

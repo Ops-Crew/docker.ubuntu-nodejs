@@ -1,3 +1,7 @@
+# 0.0.9 #
+
+- node.js v9.11.2 preinstalled
+
 # 0.0.8 #
 
 - Fixed bug with passing parameters to `docker build` command
