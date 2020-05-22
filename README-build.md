@@ -45,11 +45,6 @@ $ docker rmi -f ${IMAGES_LIST}
 
 ---
 
-### Authors and Contributors ###
-[![Contributors](https://img.shields.io/github/contributors/tbaltrushaitis/ubuntu-nodejs.svg)](https://github.com/tbaltrushaitis/ubuntu-nodejs/graphs/contributors)
-
----
-
 ### Useful Info ###
 
  - [GitHub / Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
