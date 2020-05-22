@@ -17,23 +17,24 @@ ARG SVC_USER
 
 ##  Image Labels Metadata
 ##  ------------------------------------------------------------------------  ##
-LABEL org.label-schema.schema-version="1.0"                     \
-      org.label-schema.build-date=${BUILD_DATE}                 \
-      org.label-schema.name="Ubuntu + Node.js"                  \
-      org.label-schema.description="Dockerized Node.js Server"  \
-      org.label-schema.version=${VERSION:-latest}               \
-      org.label-schema.vendor="Baltrushaitis Tomas"             \
-      org.label-schema.vcs-ref=${VCS_REF}                       \
-      org.label-schema.vcs-url=${VCS_URL}                       \
-      org.label-schema.is-production="true"                     \
-      org.label-schema.license="MIT"                            \
-      org.label-schema.maintainer.mail="tbaltrushaitis@gmail.com"
+LABEL \
+  org.label-schema.schema-version="1.0"                     \
+  org.label-schema.build-date=${BUILD_DATE}                 \
+  org.label-schema.name="Ubuntu + Node.js"                  \
+  org.label-schema.description="Dockerized Node.js Server"  \
+  org.label-schema.version=${VERSION:-latest}               \
+  org.label-schema.vendor="Baltrushaitis Tomas"             \
+  org.label-schema.vcs-ref=${VCS_REF}                       \
+  org.label-schema.vcs-url=${VCS_URL}                       \
+  org.label-schema.is-production="true"                     \
+  org.label-schema.license="MIT"                            \
+  org.label-schema.maintainer.mail="tbaltrushaitis@gmail.com"
 
 ##  ------------------------------------------------------------------------  ##
 ##  Environment Variables
 ##  ------------------------------------------------------------------------  ##
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL:-info}  \
-    NODE_VERSION=${NODE_VERSION:-8.12.0}              \
+    NODE_VERSION=${NODE_VERSION:-9.11.2}              \
     SVC_USER=${SVC_USER:-node}
 
 ##  ------------------------------------------------------------------------  ##
@@ -43,16 +44,18 @@ RUN \
 \
 ##  Create the node.js system user \
 ##  ------------------------------------------------------------------------  ## \
-  groupadd  --system            \
-            --force             \
-            --gid 1000          \
-            "${SVC_USER}"       \
- && useradd --system            \
-            --uid 1000          \
-            --gid "${SVC_USER}" \
-            --shell /bin/bash   \
-            --create-home       \
-            "${SVC_USER}"       \
+  groupadd  \
+    --system            \
+    --force             \
+    --gid 1000          \
+    "${SVC_USER}"       \
+ && useradd \
+    --system            \
+    --uid 1000          \
+    --gid "${SVC_USER}" \
+    --shell /bin/bash   \
+    --create-home       \
+    "${SVC_USER}"       \
 \
 ##  GPG keys listed at https://github.com/nodejs/node#release-team  \
 ##  ------------------------------------------------------------------------  ## \
@@ -75,20 +78,24 @@ RUN \
 \
 ##  Updates Setup                   \
 ##  ------------------------------------------------------------------------  ## \
- && apt-get -q update               \
-            --assume-yes            \
+ && apt-get         \
+      update        \
+      -q            \
+      --assume-yes  \
  && echo -e "\n\tDEPLOYED: \t UPDATES \n" \
 \
 ##  Tools Setup                     \
 ##  ------------------------------------------------------------------------  ## \
- && apt-get install                 \
-            --assume-yes            \
-            --no-install-recommends \
-            curl                    \
-            mc                      \
-            wget                    \
-            git                     \
-            htop                    \
+ && apt-get \
+      install                 \
+      --assume-yes            \
+      --no-install-recommends \
+      curl                    \
+      mc                      \
+      wget                    \
+      git                     \
+      htop                    \
+      zip                     \
  && echo -e "\n\tDEPLOYED: \t TOOLS \n" \
 \
 ##  Cleanup                         \
